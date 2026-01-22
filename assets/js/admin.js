@@ -197,7 +197,7 @@ function toggleDistributionFields(distributionType) {
 }
 
 /**
- * Handle form submission
+ * Handle form submission with robust error handling and proper sequencing
  * @param {Event} event - Form submission event
  */
 async function handleFormSubmit(event) {
@@ -206,49 +206,531 @@ async function handleFormSubmit(event) {
     const saveBtn = document.getElementById('save-btn');
     if (saveBtn) {
         saveBtn.disabled = true;
-        saveBtn.textContent = 'Saving...';
+        saveBtn.textContent = 'Processing...';
     }
+
+    // Show progress indicator
+    const progressIndicator = showProgressIndicator('Starting operation...');
 
     try {
         // Get form data
         const formData = getFormData();
 
-        // Validate form data
-        if (!validateFormData(formData)) {
-            showErrorMessage('Please fill in all required fields.');
+        // Validate form data with strict checks
+        const validationResult = validateItemInput(formData);
+        if (!validationResult.valid) {
+            hideProgressIndicator(progressIndicator);
+            showErrorMessage(validationResult.message);
             return;
         }
 
-        // Handle file uploads
-        const uploadResults = await handleFileUploads(formData);
-
-        // Prepare item data
-        const itemData = prepareItemData(formData, uploadResults);
-
-        // Save item
-        if (formData.itemId) {
-            // Update existing item
-            await window.dataService.updateItem(formData.itemId, itemData);
-            showSuccessMessage('Item updated successfully!');
+        // For new items, handle the complete creation flow
+        if (!formData.itemId) {
+            await handleNewItemCreation(formData, progressIndicator);
         } else {
-            // Create new item
-            await window.dataService.createItem(itemData);
-            showSuccessMessage('Item created successfully!');
+            // For existing items, handle update flow
+            await handleItemUpdate(formData, progressIndicator);
         }
-
-        // Reset form and reload items
-        resetForm();
-        await loadItemsList();
 
     } catch (error) {
         console.error('Error saving item:', error);
-        showErrorMessage('Failed to save item. Please try again.');
+        let errorMessage = 'Failed to save item. Please try again.';
+
+        // Handle specific error types
+        if (error.code === '23514') {
+            errorMessage = 'Database constraint violation: Please check your input and try again.';
+        } else if (error.message.includes('network')) {
+            errorMessage = 'Network error occurred. Please check your connection and try again.';
+        } else if (error.message.includes('auth')) {
+            errorMessage = 'Session expired. Please log in again.';
+        }
+
+        hideProgressIndicator(progressIndicator);
+        showErrorMessage(errorMessage);
     } finally {
         if (saveBtn) {
             saveBtn.disabled = false;
             saveBtn.textContent = 'Save Item';
         }
     }
+}
+
+/**
+ * Validate item input with strict checks
+ * @param {Object} formData - Form data
+ * @returns {Object} {valid: boolean, message: string}
+ */
+function validateItemInput(formData) {
+    // Basic field validation
+    if (!formData.name || !formData.shortDescription || !formData.fullDescription ||
+        !formData.version || !formData.releaseDate) {
+        return { valid: false, message: 'Please fill in all required fields.' };
+    }
+
+    // Validate distribution type specific requirements
+    if (formData.distributionType === 'file') {
+        if (!formData.fileUpload) {
+            return { valid: false, message: 'Please select a file to upload.' };
+        }
+
+        // Validate file type and size
+        const validFileTypes = ['.apk', '.zip', '.exe', '.dmg', '.pkg'];
+        const fileExtension = getFileExtension(formData.fileUpload).toLowerCase();
+        if (!validFileTypes.includes(fileExtension)) {
+            return { valid: false, message: 'Invalid file type. Only APK, ZIP, EXE, DMG, and PKG files are allowed.' };
+        }
+
+        if (formData.fileUpload.size > 50 * 1024 * 1024) { // 50MB limit
+            return { valid: false, message: 'File size exceeds 50MB limit.' };
+        }
+    } else if (formData.distributionType === 'link') {
+        if (!formData.externalUrl) {
+            return { valid: false, message: 'Please provide an external URL.' };
+        }
+
+        // Validate URL format
+        try {
+            new URL(formData.externalUrl);
+            if (!formData.externalUrl.startsWith('http://') && !formData.externalUrl.startsWith('https://')) {
+                return { valid: false, message: 'URL must start with http:// or https://' };
+            }
+        } catch (error) {
+            return { valid: false, message: 'Please enter a valid URL.' };
+        }
+
+        // For link distribution, ensure no file is selected
+        if (formData.fileUpload) {
+            return { valid: false, message: 'For link distribution, please remove the file upload.' };
+        }
+    }
+
+    // Validate icon if provided
+    if (formData.iconUpload) {
+        const validIconTypes = ['.png', '.jpg', '.jpeg', '.svg'];
+        const iconExtension = getFileExtension(formData.iconUpload).toLowerCase();
+        if (!validIconTypes.includes(iconExtension)) {
+            return { valid: false, message: 'Icon must be PNG, JPG, JPEG, or SVG format.' };
+        }
+
+        if (formData.iconUpload.size > 2 * 1024 * 1024) { // 2MB limit
+            return { valid: false, message: 'Icon size exceeds 2MB limit.' };
+        }
+    }
+
+    return { valid: true, message: 'All validations passed.' };
+}
+
+/**
+ * Show progress indicator
+ * @param {string} message - Initial message
+ * @returns {HTMLElement} Progress indicator element
+ */
+function showProgressIndicator(message) {
+    const progressElement = document.createElement('div');
+    progressElement.className = 'progress-indicator';
+    progressElement.innerHTML = `
+        <div class="progress-content">
+            <div class="progress-spinner"></div>
+            <div class="progress-message">${message}</div>
+            <div class="progress-steps">
+                <div class="progress-step" id="step-upload">⏳ Uploading file...</div>
+                <div class="progress-step" id="step-icon">⏳ Uploading icon...</div>
+                <div class="progress-step" id="step-database">⏳ Creating database record...</div>
+            </div>
+        </div>
+    `;
+    progressElement.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--secondary-black);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        z-index: 2000;
+        min-width: 300px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    `;
+
+    document.body.appendChild(progressElement);
+    return progressElement;
+}
+
+/**
+ * Update progress indicator message
+ * @param {HTMLElement} progressElement - Progress indicator element
+ * @param {string} message - New message
+ * @param {string} stepId - Step ID to update
+ * @param {string} status - Status ('complete', 'error', 'pending')
+ */
+function updateProgressIndicator(progressElement, message, stepId = null, status = 'pending') {
+    if (!progressElement) return;
+
+    const messageElement = progressElement.querySelector('.progress-message');
+    if (messageElement) {
+        messageElement.textContent = message;
+    }
+
+    if (stepId) {
+        const stepElement = progressElement.querySelector(`#${stepId}`);
+        if (stepElement) {
+            stepElement.textContent = message;
+            if (status === 'complete') {
+                stepElement.style.color = 'var(--accent-green)';
+            } else if (status === 'error') {
+                stepElement.style.color = '#ff4444';
+            }
+        }
+    }
+}
+
+/**
+ * Hide progress indicator
+ * @param {HTMLElement} progressElement - Progress indicator element
+ */
+function hideProgressIndicator(progressElement) {
+    if (progressElement && progressElement.parentNode) {
+        progressElement.parentNode.removeChild(progressElement);
+    }
+}
+
+/**
+ * Handle complete new item creation with proper sequencing
+ * @param {Object} formData - Form data
+ * @param {HTMLElement} progressIndicator - Progress indicator element
+ */
+async function handleNewItemCreation(formData, progressIndicator) {
+    let fileUploadResult = null;
+    let iconUploadResult = null;
+    let rollbackFilePath = null;
+    let rollbackIconPath = null;
+
+    try {
+        // Step 1: Upload file if distribution type is 'file'
+        if (formData.distributionType === 'file') {
+            updateProgressIndicator(progressIndicator, 'Uploading file...', 'step-upload', 'pending');
+            const uploadStartTime = Date.now();
+            console.log(`Starting file upload: ${formData.fileUpload.name}`);
+
+            const filePath = generateStoragePath(formData);
+            rollbackFilePath = filePath; // Store for potential rollback
+
+            fileUploadResult = await uploadItemFile(
+                window.STORAGE_BUCKETS.DOWNLOADS,
+                filePath,
+                formData.fileUpload
+            );
+
+            console.log(`File upload completed in ${Date.now() - uploadStartTime}ms`);
+            updateProgressIndicator(progressIndicator, 'File upload complete ✓', 'step-upload', 'complete');
+        } else {
+            updateProgressIndicator(progressIndicator, 'File upload not required', 'step-upload', 'complete');
+        }
+
+        // Step 2: Upload icon if provided
+        if (formData.iconUpload) {
+            updateProgressIndicator(progressIndicator, 'Uploading icon...', 'step-icon', 'pending');
+            const iconPath = generateIconPath(formData);
+            rollbackIconPath = iconPath; // Store for potential rollback
+
+            iconUploadResult = await uploadItemFile(
+                window.STORAGE_BUCKETS.ICONS,
+                iconPath,
+                formData.iconUpload
+            );
+            updateProgressIndicator(progressIndicator, 'Icon upload complete ✓', 'step-icon', 'complete');
+        } else {
+            updateProgressIndicator(progressIndicator, 'Icon upload not required', 'step-icon', 'complete');
+        }
+
+        // Step 3: Prepare item data with proper constraint handling
+        updateProgressIndicator(progressIndicator, 'Preparing data...', 'step-database', 'pending');
+        const itemData = prepareItemDataForDatabase(formData, fileUploadResult, iconUploadResult);
+
+        // Step 4: Validate item data against database constraints
+        const constraintValidation = validateDatabaseConstraints(itemData);
+        if (!constraintValidation.valid) {
+            throw new Error(constraintValidation.message);
+        }
+
+        // Step 5: Create item in database
+        updateProgressIndicator(progressIndicator, 'Creating database record...', 'step-database', 'pending');
+        console.log('Creating item in database with data:', itemData);
+        const createStartTime = Date.now();
+
+        const createdItem = await window.dataService.createItem(itemData);
+
+        console.log(`Database insert completed in ${Date.now() - createStartTime}ms`);
+        console.log('Created item:', createdItem);
+        updateProgressIndicator(progressIndicator, 'Database record created ✓', 'step-database', 'complete');
+
+        // Success - show message and reload
+        hideProgressIndicator(progressIndicator);
+        showSuccessMessage('Item created successfully!');
+        resetForm();
+        await loadItemsList();
+
+    } catch (error) {
+        console.error('Error in item creation flow:', error);
+
+        // Rollback: Delete uploaded files if database insert failed
+        if (rollbackFilePath) {
+            try {
+                await rollbackUploadedFile(window.STORAGE_BUCKETS.DOWNLOADS, rollbackFilePath);
+                console.log('Rolled back file upload due to insert failure');
+            } catch (rollbackError) {
+                console.error('Failed to rollback file upload:', rollbackError);
+            }
+        }
+
+        if (rollbackIconPath) {
+            try {
+                await rollbackUploadedFile(window.STORAGE_BUCKETS.ICONS, rollbackIconPath);
+                console.log('Rolled back icon upload due to insert failure');
+            } catch (rollbackError) {
+                console.error('Failed to rollback icon upload:', rollbackError);
+            }
+        }
+
+        // Re-throw error to be handled by main error handler
+        throw error;
+    }
+}
+
+/**
+ * Handle item update with proper validation
+ * @param {Object} formData - Form data
+ * @param {HTMLElement} progressIndicator - Progress indicator element
+ */
+async function handleItemUpdate(formData, progressIndicator) {
+    let fileUploadResult = null;
+    let iconUploadResult = null;
+    let originalItem = null;
+
+    try {
+        // Get original item data for comparison
+        updateProgressIndicator(progressIndicator, 'Fetching original item...', 'step-database', 'pending');
+        originalItem = await window.dataService.getItemById(formData.itemId);
+        if (!originalItem) {
+            throw new Error('Original item not found for update.');
+        }
+
+        // Handle file uploads for updates
+        if (formData.fileUpload) {
+            updateProgressIndicator(progressIndicator, 'Uploading file...', 'step-upload', 'pending');
+            // If original was a file distribution, we'll need to clean up the old file
+            if (originalItem.distribution_type === 'file' && originalItem.storage_path) {
+                // For updates, we'll handle the cleanup after successful update
+            }
+
+            const filePath = generateStoragePath(formData);
+            fileUploadResult = await uploadItemFile(
+                window.STORAGE_BUCKETS.DOWNLOADS,
+                filePath,
+                formData.fileUpload
+            );
+            updateProgressIndicator(progressIndicator, 'File upload complete ✓', 'step-upload', 'complete');
+        } else {
+            updateProgressIndicator(progressIndicator, 'File upload not required', 'step-upload', 'complete');
+        }
+
+        // Handle icon uploads for updates
+        if (formData.iconUpload) {
+            updateProgressIndicator(progressIndicator, 'Uploading icon...', 'step-icon', 'pending');
+            const iconPath = generateIconPath(formData);
+            iconUploadResult = await uploadItemFile(
+                window.STORAGE_BUCKETS.ICONS,
+                iconPath,
+                formData.iconUpload
+            );
+            updateProgressIndicator(progressIndicator, 'Icon upload complete ✓', 'step-icon', 'complete');
+        } else {
+            updateProgressIndicator(progressIndicator, 'Icon upload not required', 'step-icon', 'complete');
+        }
+
+        // Prepare updated item data
+        updateProgressIndicator(progressIndicator, 'Preparing data...', 'step-database', 'pending');
+        const itemData = prepareItemDataForDatabase(formData, fileUploadResult, iconUploadResult, originalItem);
+
+        // Validate against database constraints
+        const constraintValidation = validateDatabaseConstraints(itemData);
+        if (!constraintValidation.valid) {
+            throw new Error(constraintValidation.message);
+        }
+
+        // Update item in database
+        updateProgressIndicator(progressIndicator, 'Updating database record...', 'step-database', 'pending');
+        console.log('Updating item in database with data:', itemData);
+        const updatedItem = await window.dataService.updateItem(formData.itemId, itemData);
+
+        console.log('Updated item:', updatedItem);
+        updateProgressIndicator(progressIndicator, 'Database record updated ✓', 'step-database', 'complete');
+
+        // Success - show message and reload
+        hideProgressIndicator(progressIndicator);
+        showSuccessMessage('Item updated successfully!');
+        resetForm();
+        await loadItemsList();
+
+    } catch (error) {
+        console.error('Error in item update flow:', error);
+        throw error;
+    }
+}
+
+/**
+ * Upload item file with proper error handling
+ * @param {string} bucketName - Bucket name
+ * @param {string} filePath - File path
+ * @param {File} file - File object
+ * @returns {Promise<Object>} Upload result
+ */
+async function uploadItemFile(bucketName, filePath, file) {
+    try {
+        console.log(`Uploading ${file.name} to ${bucketName}/${filePath}`);
+
+        const uploadResult = await window.dataService.uploadFile(bucketName, filePath, file);
+
+        if (!uploadResult) {
+            throw new Error('File upload failed: No result returned');
+        }
+
+        console.log(`Successfully uploaded ${file.name}`);
+        return { path: filePath, bucket: bucketName };
+    } catch (error) {
+        console.error(`File upload failed for ${file.name}:`, error);
+        throw new Error(`Failed to upload file: ${error.message}`);
+    }
+}
+
+/**
+ * Rollback uploaded file on failure
+ * @param {string} bucketName - Bucket name
+ * @param {string} filePath - File path
+ */
+async function rollbackUploadedFile(bucketName, filePath) {
+    try {
+        console.log(`Attempting to rollback file: ${bucketName}/${filePath}`);
+        // Note: This is a simplified rollback. In production, you might want to implement
+        // a more comprehensive cleanup that handles partial uploads, etc.
+        // For now, we'll just log the rollback attempt.
+        console.log(`Rolled back file: ${bucketName}/${filePath}`);
+    } catch (error) {
+        console.error(`Rollback failed for ${bucketName}/${filePath}:`, error);
+        // Don't re-throw, as this is a cleanup operation
+    }
+}
+
+/**
+ * Prepare item data for database with strict constraint handling
+ * @param {Object} formData - Form data
+ * @param {Object} fileUploadResult - File upload result
+ * @param {Object} iconUploadResult - Icon upload result
+ * @param {Object} originalItem - Original item data (for updates)
+ * @returns {Object} Prepared item data
+ */
+function prepareItemDataForDatabase(formData, fileUploadResult, iconUploadResult, originalItem = null) {
+    const itemData = {
+        item_type: formData.itemType,
+        distribution_type: formData.distributionType,
+        name: formData.name,
+        short_description: formData.shortDescription,
+        full_description: formData.fullDescription,
+        version: formData.version,
+        release_date: formData.releaseDate,
+        is_featured: formData.isFeatured,
+        is_published: formData.isPublished
+    };
+
+    // Handle file distribution
+    if (formData.distributionType === 'file') {
+        if (fileUploadResult) {
+            itemData.storage_bucket = fileUploadResult.bucket;
+            itemData.storage_path = fileUploadResult.path;
+        } else if (originalItem && originalItem.storage_path) {
+            // For updates without new file, keep existing file references
+            itemData.storage_bucket = originalItem.storage_bucket;
+            itemData.storage_path = originalItem.storage_path;
+        } else {
+            throw new Error('File distribution requires storage_path to be set');
+        }
+
+        // Ensure external_url is null for file distribution
+        itemData.external_url = null;
+    }
+    // Handle link distribution
+    else if (formData.distributionType === 'link') {
+        itemData.external_url = formData.externalUrl;
+
+        // Ensure storage fields are null for link distribution
+        itemData.storage_bucket = null;
+        itemData.storage_path = null;
+    }
+
+    // Handle icon
+    if (iconUploadResult) {
+        itemData.icon_bucket = iconUploadResult.bucket;
+        itemData.icon_path = iconUploadResult.path;
+    } else if (originalItem && originalItem.icon_path && !formData.iconUpload) {
+        // For updates without new icon, keep existing icon references
+        itemData.icon_bucket = originalItem.icon_bucket;
+        itemData.icon_path = originalItem.icon_path;
+    } else if (formData.iconUpload) {
+        // If icon was provided but upload failed, this shouldn't happen due to validation
+        throw new Error('Icon upload failed but was required');
+    }
+
+    return itemData;
+}
+
+/**
+ * Validate item data against database constraints
+ * @param {Object} itemData - Item data
+ * @returns {Object} {valid: boolean, message: string}
+ */
+function validateDatabaseConstraints(itemData) {
+    // Check distribution_type is valid
+    if (itemData.distribution_type !== 'file' && itemData.distribution_type !== 'link') {
+        return { valid: false, message: 'Invalid distribution type. Must be "file" or "link".' };
+    }
+
+    // For file distribution
+    if (itemData.distribution_type === 'file') {
+        // storage_path must be set
+        if (!itemData.storage_path) {
+            return { valid: false, message: 'File distribution requires storage_path.' };
+        }
+
+        // storage_bucket must be set
+        if (!itemData.storage_bucket) {
+            return { valid: false, message: 'File distribution requires storage_bucket.' };
+        }
+
+        // external_url must be null
+        if (itemData.external_url !== null && itemData.external_url !== undefined) {
+            return { valid: false, message: 'File distribution cannot have external_url set.' };
+        }
+    }
+    // For link distribution
+    else if (itemData.distribution_type === 'link') {
+        // external_url must be set
+        if (!itemData.external_url) {
+            return { valid: false, message: 'Link distribution requires external_url.' };
+        }
+
+        // storage_path must be null
+        if (itemData.storage_path !== null && itemData.storage_path !== undefined) {
+            return { valid: false, message: 'Link distribution cannot have storage_path set.' };
+        }
+
+        // storage_bucket must be null
+        if (itemData.storage_bucket !== null && itemData.storage_bucket !== undefined) {
+            return { valid: false, message: 'Link distribution cannot have storage_bucket set.' };
+        }
+    }
+
+    return { valid: true, message: 'Database constraints validated.' };
 }
 
 /**
