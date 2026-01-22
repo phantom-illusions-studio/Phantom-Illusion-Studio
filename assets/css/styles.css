@@ -1,0 +1,340 @@
+/* Base Styles */
+:root {
+    --primary-black: #121212;
+    --secondary-black: #1e1e1e;
+    --accent-purple: #8a2be2;
+    --accent-green: #00ff7f;
+    --text-white: #ffffff;
+    --text-gray: #cccccc;
+    --text-light: #e0e0e0;
+    --border-color: #333333;
+    --glass-effect: rgba(255, 255, 255, 0.05);
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-black);
+    color: var(--text-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-white);
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--secondary-black);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent-purple);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    transition: color var(--transition-speed) ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--accent-purple);
+}
+
+.nav-links a.active {
+    color: var(--accent-purple);
+    font-weight: 500;
+}
+
+/* Hero Section */
+.hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 2rem;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, var(--text-white), var(--accent-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-gray);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: var(--accent-purple);
+    color: white;
+    border-radius: 4px;
+    transition: all var(--transition-speed) ease;
+    font-weight: 500;
+}
+
+.cta-button:hover {
+    background-color: #7b1dd1;
+    transform: translateY(-2px);
+}
+
+/* Section Styles */
+section {
+    padding: 4rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+}
+
+/* Items Grid */
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.item-card {
+    background-color: var(--secondary-black);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    cursor: pointer;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.item-icon {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: var(--border-color);
+}
+
+.item-content {
+    padding: 1.5rem;
+}
+
+.item-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.item-content p {
+    color: var(--text-gray);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.item-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-gray);
+}
+
+.item-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.download-btn, .view-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all var(--transition-speed) ease;
+}
+
+.download-btn {
+    background-color: var(--accent-purple);
+    color: white;
+}
+
+.download-btn:hover {
+    background-color: #7b1dd1;
+}
+
+.view-btn {
+    background-color: var(--accent-green);
+    color: var(--primary-black);
+}
+
+.view-btn:hover {
+    background-color: #00e66f;
+}
+
+/* Item Detail Page */
+.item-detail {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.detail-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.detail-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    display: block;
+}
+
+.detail-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.detail-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-gray);
+}
+
+.detail-description {
+    background-color: var(--secondary-black);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.detail-actions {
+    text-align: center;
+}
+
+/* Loading State */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-gray);
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-black);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    color: var(--text-gray);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    section {
+        padding: 2rem 1rem;
+    }
+
+    .items-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 50vh;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .detail-icon {
+        width: 120px;
+        height: 120px;
+    }
+}
