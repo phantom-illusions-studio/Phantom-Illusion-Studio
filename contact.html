@@ -4,22 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Phantom Illusions Studio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/animations.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">Phantom Illusions</div>
-<ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="apps.html">Apps</a></li>
-    <li><a href="software.html">Software</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
-    <li><a href="login.html">Login</a></li>
-</ul>
+            <div class="logo-section">
+                <img src="assets/images/logo.png" alt="Phantom Illusions Logo" class="logo-image">
+                <div class="logo-text">Phantom Illusions</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="software.html">Software</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">×</button>
+        <a href="index.html">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="software.html">Software</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="login.html">Login</a>
+    </div>
 
     <main>
         <section class="page-header">
@@ -43,8 +66,71 @@
 
     <footer>
         <div class="footer-content">
+            <div class="footer-section">
+                <h3>Phantom Illusions Studio</h3>
+                <p>Premium digital studio creating innovative applications and software solutions.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="apps.html">Applications</a>
+                <a href="software.html">Software</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://github.com" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">GH</a>
+                    <a href="https://twitter.com" class="social-link" aria-label="X / Twitter" target="_blank" rel="noopener noreferrer">X</a>
+                    <a href="https://instagram.com" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">IG</a>
+                    <a href="https://reddit.com" class="social-link" aria-label="Reddit" target="_blank" rel="noopener noreferrer">RD</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
             <p>&copy; 2026 Phantom Illusions Studio. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        function toggleMobileMenu() {
+            const isOpen = mobileMenu.classList.contains('active');
+            
+            if (isOpen) {
+                mobileMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            } else {
+                mobileMenu.classList.add('active');
+                mobileOverlay.classList.add('active');
+                hamburger.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        hamburger.addEventListener('click', toggleMobileMenu);
+        mobileMenuClose.addEventListener('click', toggleMobileMenu);
+        mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Close menu when clicking outside or on a link
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                toggleMobileMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+    </script>
 </body>
 </html>
