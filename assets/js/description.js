@@ -37,8 +37,11 @@ async function initDescriptionPage() {
  * @param {string} itemId - Item ID
  */
 async function loadItemDetails(itemId) {
-    const detailContainer = document.getElementById('item-detail');
-    if (!detailContainer) return;
+    const detailContainer = document.getElementById('item-detail-content');
+    if (!detailContainer) {
+        console.error('Container element #item-detail-content not found');
+        return;
+    }
 
     try {
         // Show loading state
