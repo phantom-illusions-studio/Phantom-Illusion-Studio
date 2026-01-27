@@ -312,6 +312,39 @@ section {
     margin: 0 auto;
 }
 
+/* ==============================
+   Contact Section Glass Effect
+   ============================== */
+.contact-content {
+    background: rgba(255, 255, 255, 0.05); /* semi-transparent glass */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* subtle border */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 2rem auto;
+    transition: all 0.3s ease;
+}
+
+.contact-content h2,
+.contact-content h3 {
+    color: var(--accent-purple); /* optional accent for headings */
+    margin-bottom: 1rem;
+}
+
+.contact-content p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Optional: subtle hover for interactivity */
+.contact-content:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(138, 43, 226, 0.15);
+}
+
+
 /* =============================
    ITEM GRID AND CARD
    ============================= */
@@ -708,6 +741,27 @@ footer {
         font-size: 0.7rem; /* smaller button */
         padding: 0.45rem 0.8rem; /* reduce padding */
     }
+
+    /* ==============================
+    Contact Details - Extra Small Devices (<360px)
+    ============================== */
+    .contact-details {
+        padding: 0.6rem;            /* smaller padding */
+        margin-top: 0.5rem;
+        border-radius: 10px;        /* slightly smaller corners */
+    }
+
+    .contact-details h3 {
+        font-size: 0.85rem;         /* smaller sub-heading */
+        margin-bottom: 0.3rem;
+    }
+
+    .contact-details p {
+        font-size: 0.7rem;          /* smaller text */
+        line-height: 1.35;
+        margin-bottom: 0.25rem;
+    }
+
 
     /* ================= Footer ================= */
     footer {
