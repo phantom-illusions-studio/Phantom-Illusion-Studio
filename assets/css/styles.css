@@ -678,93 +678,69 @@ footer {
     }
 }
 
-/* Extra Small Devices (<360px) - Ultra compact scaling (~40% reduction) */
+/* Extra Small Devices (<360px) - Compact scaling for hero & footer */
 @media (max-width: 359px) {
 
-    /* ================= Header / Navigation ================= */
-    header {
-        padding: 0.24rem 0;
-    }
-
-    nav {
-        padding: 0 0.24rem;
-        gap: 0.24rem;
-    }
-
-    .logo-text {
-        font-size: 0.57rem;
-    }
-
-    .nav-links a {
-        font-size: 0.36rem;
-        padding: 0.06rem 0;
-    }
-
-    .hamburger span {
-        width: 9.6px;
-        height: 1.2px;
-    }
-
     /* ================= Hero Section ================= */
+    .hero {
+        padding: 1rem 0.5rem; /* Reduce overall hero spacing */
+        min-height: auto; /* Let hero shrink to fit content */
+    }
+
+    .hero-content {
+        max-width: 90%; /* Slightly narrower to fit small screens */
+        padding: 0 0.25rem;
+    }
+
     .hero h1 {
-        font-size: 0.84rem;
-        line-height: 0.69;
+        font-size: 1.2rem; /* smaller, still readable */
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
     }
 
     .hero p {
-        font-size: 0.39rem;
-        line-height: 0.81;
+        font-size: 0.6rem; /* smaller text */
+        line-height: 1.3;
+        margin-bottom: 0.75rem;
     }
 
     .cta-button {
-        font-size: 0.48rem;
-        padding: 0.3rem 0.54rem;
-    }
-
-    /* ================= Sections ================= */
-    section {
-        padding: 1.5rem 0.48rem;
-    }
-
-    .page-header h1 {
-        font-size: 0.81rem;
-    }
-
-    .page-header p {
-        font-size: 0.39rem;
+        font-size: 0.7rem; /* smaller button */
+        padding: 0.45rem 0.8rem; /* reduce padding */
     }
 
     /* ================= Footer ================= */
     footer {
-        padding: 1.08rem 0.48rem;
+        padding: 1.8rem 0.8rem; /* shrink footer spacing */
     }
 
     .footer-content {
-        gap: 0.48rem;
+        gap: 0.8rem; /* reduce section gaps */
     }
 
     .footer-section h3 {
-        font-size: 0.48rem;
+        font-size: 0.8rem; /* smaller headings */
     }
 
     .footer-section p,
     .footer-section a {
-        font-size: 0.39rem;
+        font-size: 0.65rem; /* smaller text */
     }
 
     .social-link {
-        width: 15.6px;
-        height: 15.6px;
-        font-size: 0.45rem;
+        width: 26px;
+        height: 26px;
+        font-size: 0.75rem;
     }
 
     .footer-bottom {
-        font-size: 0.36rem;
+        font-size: 0.6rem; /* smaller copyright */
     }
 
     /* ================= Detail Page Icon ================= */
     .detail-page .detail-icon {
-        max-width: 30%;
-        max-height: 30%;
+        max-width: 50%;
+        max-height: 50%;
     }
+
 }
