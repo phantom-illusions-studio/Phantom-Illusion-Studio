@@ -678,94 +678,93 @@ footer {
     }
 }
 
-/* Extra Small Devices (<360px) - Optimized compact scaling for fonts, padding, header & footer */
+/* Extra Small Devices (<360px) - Ultra compact scaling (~40% reduction) */
 @media (max-width: 359px) {
 
     /* ================= Header / Navigation ================= */
     header {
-        padding: 0.4rem 0;
+        padding: 0.24rem 0;
     }
 
     nav {
-        padding: 0 0.4rem;
-        gap: 0.4rem;
+        padding: 0 0.24rem;
+        gap: 0.24rem;
     }
 
     .logo-text {
-        font-size: 0.95rem;
+        font-size: 0.57rem;
     }
 
     .nav-links a {
-        font-size: 0.6rem;
-        padding: 0.1rem 0;
+        font-size: 0.36rem;
+        padding: 0.06rem 0;
     }
 
     .hamburger span {
-        width: 16px;
-        height: 2px;
+        width: 9.6px;
+        height: 1.2px;
     }
 
     /* ================= Hero Section ================= */
     .hero h1 {
-        font-size: 1.4rem;
-        line-height: 1.15;
+        font-size: 0.84rem;
+        line-height: 0.69;
     }
 
     .hero p {
-        font-size: 0.65rem;
-        line-height: 1.35;
+        font-size: 0.39rem;
+        line-height: 0.81;
     }
 
     .cta-button {
-        font-size: 0.8rem;
-        padding: 0.5rem 0.9rem;
+        font-size: 0.48rem;
+        padding: 0.3rem 0.54rem;
     }
 
     /* ================= Sections ================= */
     section {
-        padding: 2.5rem 0.8rem;
+        padding: 1.5rem 0.48rem;
     }
 
     .page-header h1 {
-        font-size: 1.35rem;
+        font-size: 0.81rem;
     }
 
     .page-header p {
-        font-size: 0.65rem;
+        font-size: 0.39rem;
     }
 
     /* ================= Footer ================= */
     footer {
-        padding: 1.8rem 0.8rem;
+        padding: 1.08rem 0.48rem;
     }
 
     .footer-content {
-        gap: 0.8rem;
+        gap: 0.48rem;
     }
 
     .footer-section h3 {
-        font-size: 0.8rem;
+        font-size: 0.48rem;
     }
 
     .footer-section p,
     .footer-section a {
-        font-size: 0.65rem;
+        font-size: 0.39rem;
     }
 
     .social-link {
-        width: 26px;
-        height: 26px;
-        font-size: 0.75rem;
+        width: 15.6px;
+        height: 15.6px;
+        font-size: 0.45rem;
     }
 
     .footer-bottom {
-        font-size: 0.6rem;
+        font-size: 0.36rem;
     }
 
     /* ================= Detail Page Icon ================= */
     .detail-page .detail-icon {
-        max-width: 50%;
-        max-height: 50%;
+        max-width: 30%;
+        max-height: 30%;
     }
 }
-
