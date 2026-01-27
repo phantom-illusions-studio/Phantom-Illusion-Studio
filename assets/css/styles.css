@@ -313,10 +313,8 @@ section {
 }
 
 /* =============================
-   ITEM GRID AND CARD UNIFORM HEIGHT + MOBILE SHRINK
+   ITEM GRID AND CARD
    ============================= */
-
-/* Items Grid - Stretch cards to same row height */
 .items-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -325,7 +323,6 @@ section {
     align-items: stretch;
 }
 
-/* Item Card */
 .item-card {
     background: rgba(30, 30, 30, 0.6);
     backdrop-filter: blur(10px);
@@ -341,7 +338,7 @@ section {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%; /* stretch to match row */
+    height: 100%;
 }
 
 .item-card:hover {
@@ -351,7 +348,6 @@ section {
     background: rgba(40, 40, 40, 0.7);
 }
 
-/* Image Container */
 .item-image-container {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -378,7 +374,6 @@ section {
     transform: scale(1.05);
 }
 
-/* Content Area */
 .item-content {
     padding: clamp(0.75rem, 2.5vw, 1.5rem);
     display: flex;
@@ -414,7 +409,6 @@ section {
     transition: font-size var(--transition-speed) ease;
 }
 
-/* Metadata */
 .item-meta {
     display: flex;
     justify-content: space-between;
@@ -437,7 +431,6 @@ section {
     text-overflow: ellipsis;
 }
 
-/* Actions */
 .item-actions {
     margin-top: clamp(0.75rem, 2vw, 1rem);
     display: flex;
@@ -460,7 +453,6 @@ section {
     white-space: nowrap;
 }
 
-/* Buttons */
 .download-btn {
     background: linear-gradient(135deg, var(--accent-purple) 0%, #7b1dd1 100%);
     color: white;
@@ -570,7 +562,7 @@ footer {
    RESPONSIVE BREAKPOINTS
    ============================= */
 
-/* All screens below 1025px - Show hamburger, hide desktop nav */
+/* All screens below 1025px - Show hamburger */
 @media (max-width: 1024px) {
     .nav-links {
         display: none;
@@ -579,1716 +571,217 @@ footer {
     .hamburger {
         display: flex;
     }
-
-    /* Tablet (768-1024px) - 50% scaling */
-    @media (min-width: 768px) {
-        /* Navigation */
-        nav {
-            padding: 0 1rem;
-        }
-
-        /* Hero */
-        .hero {
-            min-height: 60vh;
-            padding: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(1.75rem, 6vw, 2.5rem);
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .cta-button {
-            padding: 0.875rem 2rem;
-            font-size: 1rem;
-        }
-
-        /* Sections */
-        section {
-            padding: 3rem 1rem;
-        }
-
-        .page-header {
-            margin-bottom: 2.5rem;
-        }
-
-        .page-header h1 {
-            font-size: clamp(1.5rem, 5vw, 2.25rem);
-            margin-bottom: 0.75rem;
-        }
-
-        .page-header p {
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-        }
-
-        /* Items Grid */
-        .items-grid {
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 1rem;
-        }
-
-        /* Item Card - 50% scaling for tablet */
-        .item-card {
-            transform: scale(0.5);
-            transform-origin: top center;
-            margin-bottom: 2rem;
-        }
-
-        .item-card:hover {
-            transform: scale(0.5) translateY(-3px);
-        }
-
-        .item-image-container {
-            max-height: 140px;
-            padding: 0.5rem;
-        }
-
-        .item-content {
-            padding: 0.75rem;
-            gap: 0.5rem;
-        }
-
-        .item-content h3 {
-            font-size: 0.95rem;
-            -webkit-line-clamp: 2;
-        }
-
-        .item-content p {
-            font-size: 0.85rem;
-            -webkit-line-clamp: 3;
-        }
-
-        .item-meta {
-            font-size: 0.75rem;
-            padding-top: 0.5rem;
-        }
-
-        .item-actions {
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .download-btn,
-        .view-btn {
-            font-size: 0.8rem;
-            padding: 0.5rem 0.75rem;
-            white-space: normal;
-        }
-
-        /* Item Detail Page - 50% scaling for tablet */
-        .item-detail-image {
-            max-width: 320px;
-            transform: scale(0.5);
-            transform-origin: center;
-        }
-
-        /* Footer */
-        footer {
-            padding: 2rem 1rem 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .footer-section h3 {
-            font-size: 1.1rem;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            font-size: 0.9rem;
-        }
-
-        .social-links {
-            gap: 0.75rem;
-        }
-
-        .social-link {
-            width: 36px;
-            height: 36px;
-            font-size: 1.1rem;
-        }
-
-        .footer-bottom {
-            margin: 1.5rem auto 0;
-            padding-top: 1.5rem;
-            font-size: 0.85rem;
-        }
-    }
-
-    /* Mobile (480-767px) - 40% scaling */
-    @media (min-width: 480px) {
-        /* Navigation */
-        nav {
-            padding: 0 0.75rem;
-        }
-
-        .logo-text {
-            font-size: 1.25rem;
-        }
-
-        .logo-image {
-            width: 36px;
-            height: 36px;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            width: 85%;
-            max-width: 280px;
-            padding: 5rem 1.5rem 1.5rem;
-        }
-
-        .mobile-menu-close {
-            top: 1rem;
-            right: 1rem;
-            width: 36px;
-            height: 36px;
-            font-size: 1.75rem;
-        }
-
-        /* Hero */
-        .hero {
-            min-height: 55vh;
-            padding: 1rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(1.5rem, 7vw, 2rem);
-        }
-
-        .hero p {
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .cta-button {
-            padding: 0.75rem 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        /* Sections */
-        section {
-            padding: 2.5rem 0.75rem;
-        }
-
-        .page-header {
-            margin-bottom: 2rem;
-        }
-
-        /* Items Grid */
-        .items-grid {
-            grid-template-columns: 1fr;
-            gap: 0.75rem;
-        }
-
-        /* Item Card - 40% scaling for mobile */
-        .item-card {
-            transform: scale(0.4);
-            transform-origin: top center;
-            margin-bottom: 1.5rem;
-        }
-
-        .item-card:hover {
-            transform: scale(0.4) translateY(-3px);
-        }
-
-        .item-image-container {
-            max-height: 130px;
-            padding: 0.4rem;
-        }
-
-        .item-content {
-            padding: 0.6rem;
-            gap: 0.4rem;
-        }
-
-        .item-content h3 {
-            font-size: 0.9rem;
-        }
-
-        .item-content p {
-            font-size: 0.8rem;
-        }
-
-        .item-meta {
-            font-size: 0.7rem;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.25rem;
-        }
-
-        .item-actions {
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .download-btn,
-        .view-btn {
-            width: 100%;
-            font-size: 0.85rem;
-            padding: 0.6rem 1rem;
-        }
-
-        /* Item Detail Page - 40% scaling for mobile */
-        .item-detail-image {
-            max-width: 100%;
-            margin: 1rem 0;
-            transform: scale(0.4);
-            transform-origin: center;
-        }
-
-        /* Footer */
-        footer {
-            padding: 1.5rem 0.75rem 1rem;
-            margin-top: 2.5rem;
-        }
-
-        .footer-content {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .footer-section h3 {
-            font-size: 1rem;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            font-size: 0.85rem;
-        }
-
-        .social-links {
-            gap: 0.5rem;
-        }
-
-        .social-link {
-            width: 32px;
-            height: 32px;
-            font-size: 1rem;
-        }
-
-        .footer-bottom {
-            margin: 1rem auto 0;
-            padding-top: 1rem;
-            font-size: 0.8rem;
-        }
-    }
-
-    /* Mobile (360-479px) - 40% scaling */
-    @media (min-width: 360px) {
-        /* Navigation */
-        nav {
-            padding: 0 0.75rem;
-        }
-
-        .logo-text {
-            font-size: 1.2rem;
-        }
-
-        .logo-image {
-            width: 34px;
-            height: 34px;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            width: 88%;
-            max-width: 270px;
-            padding: 4.8rem 1.3rem 1.3rem;
-        }
-
-        .mobile-menu-close {
-            top: 0.9rem;
-            right: 0.9rem;
-            width: 34px;
-            height: 34px;
-            font-size: 1.6rem;
-        }
-
-        /* Hero */
-        .hero {
-            min-height: 52vh;
-        }
-
-        .hero h1 {
-            font-size: clamp(1.4rem, 7.5vw, 1.8rem);
-        }
-
-        .hero p {
-            font-size: 0.87rem;
-        }
-
-        .cta-button {
-            padding: 0.7rem 1.3rem;
-            font-size: 0.92rem;
-        }
-
-        /* Sections */
-        section {
-            padding: 2.2rem 0.6rem;
-        }
-
-        /* Items Grid */
-        .items-grid {
-            gap: 0.65rem;
-        }
-
-        /* Item Card - 40% scaling */
-        .item-card {
-            transform: scale(0.4);
-            transform-origin: top center;
-            margin-bottom: 1.5rem;
-        }
-
-        .item-card:hover {
-            transform: scale(0.4) translateY(-2px);
-        }
-
-        .item-image-container {
-            max-height: 125px;
-            padding: 0.35rem;
-        }
-
-        .item-content {
-            padding: 0.55rem;
-            gap: 0.38rem;
-        }
-
-        .item-content h3 {
-            font-size: 0.87rem;
-        }
-
-        .item-content p {
-            font-size: 0.78rem;
-        }
-
-        .item-meta {
-            font-size: 0.68rem;
-        }
-
-        .download-btn,
-        .view-btn {
-            font-size: 0.82rem;
-            padding: 0.55rem 0.9rem;
-        }
-
-        /* Item Detail Page - 40% scaling */
-        .item-detail-image {
-            transform: scale(0.4);
-            transform-origin: center;
-        }
-
-        /* Footer */
-        footer {
-            padding: 1.4rem 0.6rem 0.9rem;
-            margin-top: 2.2rem;
-        }
-
-        .footer-content {
-            gap: 1.4rem;
-        }
-
-        .footer-section h3 {
-            font-size: 0.98rem;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            font-size: 0.82rem;
-        }
-
-        .social-link {
-            width: 30px;
-            height: 30px;
-            font-size: 0.95rem;
-        }
-
-        .footer-bottom {
-            margin: 0.9rem auto 0;
-            padding-top: 0.9rem;
-            font-size: 0.78rem;
-        }
-    }
-
-    /* Small Mobile (<360px) - 30% scaling */
-    @media (max-width: 359px) {
-        /* Navigation */
-        nav {
-            padding: 0 0.5rem;
-        }
-
-        .logo-text {
-            font-size: 1.1rem;
-        }
-
-        .logo-image {
-            width: 32px;
-            height: 32px;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            width: 90%;
-            max-width: 260px;
-            padding: 4.5rem 1rem 1rem;
-        }
-
-        .mobile-menu-close {
-            top: 0.75rem;
-            right: 0.75rem;
-            width: 32px;
-            height: 32px;
-            font-size: 1.5rem;
-        }
-
-        .mobile-menu a {
-            padding: 0.875rem;
-            font-size: 0.95rem;
-        }
-
-        /* Hero */
-        .hero {
-            min-height: 50vh;
-        }
-
-        .hero h1 {
-            font-size: clamp(1.35rem, 8vw, 1.75rem);
-        }
-
-        .hero p {
-            font-size: 0.85rem;
-        }
-
-        .cta-button {
-            padding: 0.65rem 1.25rem;
-            font-size: 0.9rem;
-        }
-
-        /* Sections */
-        section {
-            padding: 2rem 0.5rem;
-        }
-
-        /* Items Grid */
-        .items-grid {
-            gap: 0.6rem;
-        }
-
-        /* Item Card - 30% scaling for smallest screens */
-        .item-card {
-            transform: scale(0.3);
-            transform-origin: top center;
-            margin-bottom: 1rem;
-        }
-
-        .item-card:hover {
-            transform: scale(0.3) translateY(-2px);
-        }
-
-        .item-image-container {
-            max-height: 120px;
-            padding: 0.3rem;
-        }
-
-        .item-content {
-            padding: 0.5rem;
-            gap: 0.35rem;
-        }
-
-        .item-content h3 {
-            font-size: 0.85rem;
-        }
-
-        .item-content p {
-            font-size: 0.75rem;
-        }
-
-        .item-meta {
-            font-size: 0.65rem;
-        }
-
-        .download-btn,
-        .view-btn {
-            font-size: 0.75rem;
-            padding: 0.5rem 0.75rem;
-        }
-
-        /* Item Detail Page - 30% scaling for smallest screens */
-        .item-detail-image {
-            transform: scale(0.3);
-            transform-origin: center;
-        }
-
-        /* Footer */
-        footer {
-            padding: 1.25rem 0.5rem 0.75rem;
-            margin-top: 2rem;
-        }
-
-        .footer-content {
-            gap: 1.25rem;
-        }
-
-        .footer-section h3 {
-            font-size: 0.95rem;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            font-size: 0.8rem;
-            line-height: 1.5;
-        }
-
-        .social-link {
-            width: 28px;
-            height: 28px;
-            font-size: 0.9rem;
-        }
-
-        .footer-bottom {
-            margin: 0.75rem auto 0;
-            padding-top: 0.75rem;
-            font-size: 0.75rem;
-        }
-    }
 }
 
-/* Desktop (1025px+) - Full desktop experience */
-@media (min-width: 1025px) {
-    .nav-links {
-        display: flex;
-    }
-
-    .hamburger {
-        display: none;
-    }
-
-    /* Ensure no scaling on desktop */
-    .item-card {
-        transform: none;
-    }
-
-    .item-card:hover {
-        transform: translateY(-5px);
-    }
-
-    /* Ensure no scaling on desktop for detail images */
-    .item-detail-image {
-        transform: none;
-        max-width: 400px;
-    }
-}
-/* =============================
-   READABILITY SAFEGUARD - MINIMUM FONT SIZES
-   ============================= */
-@media (max-width: 767px) {
-    /* Ensure text remains readable at aggressive scaling */
-    .item-card h3,
-    .item-card .title {
-        font-size: max(0.875rem, 14px) !important;
-    }
-
-    .item-card p,
-    .item-card .description {
-        font-size: max(0.75rem, 12px) !important;
-    }
-
-    .item-card .metadata,
-    .item-card small,
-    .item-meta {
-        font-size: max(0.625rem, 10px) !important;
-    }
-
-    /* Ensure buttons remain usable */
-    .download-btn,
-    .view-btn {
-        min-height: 36px;
-        font-size: max(0.75rem, 12px) !important;
-    }
-}
-/* =============================
-   CONTACT PAGE STYLES
-   ============================= */
-.contact-content {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.contact-info {
-    background: rgba(30, 30, 30, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    transition: all var(--transition-speed) ease;
-}
-
-.contact-info:hover {
-    border-color: rgba(138, 43, 226, 0.3);
-    background: rgba(40, 40, 40, 0.7);
-}
-
-.contact-info h2 {
-    font-size: 1.8rem;
-    color: var(--accent-purple);
-    margin-bottom: 1rem;
-    font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.contact-info p {
-    color: var(--text-gray);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-}
-
-.contact-details {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--glass-border);
-}
-
-.contact-details h3 {
-    font-size: 1.3rem;
-    color: var(--text-white);
-    margin-bottom: 1rem;
-}
-
-.contact-details p {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-light);
-}
-/* =============================
-   DESCRIPTION / ITEM DETAIL PAGE
-   ============================= */
-.item-detail {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.item-detail-content {
-    background: rgba(30, 30, 30, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    transition: all var(--transition-speed) ease;
-}
-
-.item-detail-content:hover {
-    border-color: rgba(138, 43, 226, 0.3);
-    background: rgba(40, 40, 40, 0.7);
-}
-
-.item-detail-header {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.item-detail-header h1 {
-    font-size: 2rem;
-    color: var(--text-white);
-    margin-bottom: 0.5rem;
-    font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.item-detail-meta {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    color: var(--text-gray);
-    font-size: 0.9rem;
-}
-
-.item-detail-meta span {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.item-detail-image {
-    width: 100%;
-    max-width: 400px;
-    aspect-ratio: 4/3;
-    margin: 1.5rem 0;
-    border-radius: 12px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.02);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform var(--transition-speed) ease;
-}
-
-.item-detail-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.item-detail-description {
-    margin: 1.5rem 0;
-    line-height: 1.7;
-    color: var(--text-gray);
-    font-size: 1.05rem;
-}
-
-.item-detail-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-.item-detail-actions .download-btn,
-.item-detail-actions .view-btn {
-    flex: 1;
-    min-width: 150px;
-    text-align: center;
-}
-
-.loading {
-    text-align: center;
-    padding: 3rem;
-    color: var(--text-gray);
-    font-size: 1.1rem;
-}
-
-.error-message {
-    background: rgba(255, 68, 68, 0.15);
-    border: 1px solid rgba(255, 68, 68, 0.3);
-    color: #ff6b6b;
-    padding: 1.5rem;
-    border-radius: 12px;
-    text-align: center;
-    margin: 2rem 0;
-}
-/* =============================
-   RESPONSIVE BREAKPOINTS - CONTACT & DESCRIPTION
-   ============================= */
-
-/* Tablet & Mobile (≤ 834px) */
-@media (max-width: 834px) {
-    /* Contact Page */
-    .contact-info {
-        padding: 1.75rem;
-    }
-
-    .contact-info h2 {
-        font-size: 1.5rem;
-    }
-
-    .contact-info p {
-        font-size: 1rem;
-    }
-
-    .contact-details {
-        margin-top: 1.5rem;
-        padding-top: 1.5rem;
-    }
-
-    .contact-details h3 {
-        font-size: 1.15rem;
-    }
-
-    /* Description Page */
-    .item-detail-content {
-        padding: 1.75rem;
-    }
-
-    .item-detail-header h1 {
-        font-size: 1.6rem;
-    }
-
-    .item-detail-meta {
-        gap: 1rem;
-        font-size: 0.85rem;
-    }
-
-    .item-detail-description {
-        font-size: 1rem;
-    }
-
-    .item-detail-actions {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .item-detail-actions .download-btn,
-    .item-detail-actions .view-btn {
-        width: 100%;
-    }
-}
-
-/* Extra Small Mobile (≤ 480px) */
-@media (max-width: 480px) {
-    /* Contact Page */
-    .contact-info {
-        padding: 1.25rem;
-    }
-
-    .contact-info h2 {
-        font-size: 1.3rem;
-    }
-
-    .contact-info p {
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-
-    .contact-details {
-        margin-top: 1.25rem;
-        padding-top: 1.25rem;
-    }
-
-    .contact-details h3 {
-        font-size: 1.05rem;
-    }
-
-    .contact-details p {
-        font-size: 0.85rem;
-    }
-
-    /* Description Page */
-    .item-detail-content {
-        padding: 1rem;
-    }
-
-    .item-detail-header h1 {
-        font-size: 1.4rem;
-    }
-
-    .item-detail-meta {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .item-detail-image {
-        max-width: 100%;
-        margin: 1rem 0;
-    }
-
-    .item-detail-description {
-        font-size: 0.9rem;
-        margin: 1rem 0;
-    }
-
-    .item-detail-actions {
-        margin-top: 1.5rem;
-    }
-}
-
-/* Small Mobile (≤ 360px) */
-@media (max-width: 360px) {
-    /* Contact Page */
-    .contact-info {
-        padding: 1rem;
-    }
-
-    .contact-info h2 {
-        font-size: 1.2rem;
-    }
-
-    .contact-info p {
-        font-size: 0.85rem;
-    }
-
-    .contact-details h3 {
-        font-size: 1rem;
-    }
-
-    .contact-details p {
-        font-size: 0.8rem;
-    }
-
-    /* Description Page */
-    .item-detail-content {
-        padding: 0.75rem;
-    }
-
-    .item-detail-header h1 {
-        font-size: 1.25rem;
-    }
-
-    .item-detail-meta {
-        font-size: 0.75rem;
-    }
-
-    .item-detail-description {
-        font-size: 0.85rem;
-    }
-
-    .loading {
-        padding: 2rem 1rem;
-        font-size: 1rem;
-    }
-}
-/* Extra Small Mobile (≤ 480px) - Portrait focus */
-@media (max-width: 480px) {
-    /* Navigation */
-    nav {
-        padding: 0 0.75rem;
-    }
-
-    .logo-text {
-        font-size: 1.25rem;
-    }
-
-    .logo-image {
-        width: 36px;
-        height: 36px;
-    }
-
-    /* Mobile Menu - Ensure proper sizing */
-    .mobile-menu {
-        width: 85%;
-        max-width: 280px;
-        padding: 5rem 1.5rem 1.5rem;
-    }
-
-    .mobile-menu-close {
-        top: 1rem;
-        right: 1rem;
-        width: 36px;
-        height: 36px;
-        font-size: 1.75rem;
-    }
-
-    /* Hero */
-    .hero {
-        min-height: 55vh;
-        padding: 1rem;
-    }
-
-    .hero h1 {
-        font-size: clamp(1.5rem, 7vw, 2rem);
-    }
-
-    .hero p {
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
-
-    .cta-button {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.95rem;
-    }
-
-    /* Sections */
-    section {
-        padding: 2.5rem 0.75rem;
-    }
-
-    .page-header {
-        margin-bottom: 2rem;
-    }
-
-    /* Items Grid - Single column for very small screens */
+/* Tablet (<= 768px) - Adjust card scaling with padding, image height, text */
+@media (max-width: 768px) {
     .items-grid {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
+        grid-template-columns: 1fr 1fr; /* Two columns on tablets */
+        gap: 1rem; /* Reduce gap */
     }
 
-    /* Item Card - More aggressive scaling for mobile */
     .item-card {
-        transform: scale(0.75);
-        transform-origin: top center;
-    }
-
-    .item-card:hover {
-        transform: scale(0.75) translateY(-3px);
+        width: 100%;
+        min-width: 0;
     }
 
     .item-image-container {
-        max-height: 130px;
-        padding: 0.4rem;
+        aspect-ratio: auto; /* Adjust for smaller screens */
+        height: 150px; /* Smaller height */
+    }
+
+    .item-icon {
+        max-width: 80%;
+        max-height: 80%;
     }
 
     .item-content {
-        padding: 0.6rem;
-        gap: 0.4rem;
+        padding: 0.75rem; /* Reduce padding */
     }
 
     .item-content h3 {
-        font-size: 0.9rem;
+        font-size: 0.9rem; /* Smaller text */
+        margin-bottom: 0.25rem;
     }
 
     .item-content p {
-        font-size: 0.8rem;
+        font-size: 0.75rem; /* Smaller text */
+        margin-bottom: 0.5rem;
     }
 
     .item-meta {
-        font-size: 0.7rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
+        font-size: 0.8rem; /* Reduce meta size */
+        gap: 0.5rem;
     }
 
     .item-actions {
-        flex-direction: column;
-        gap: 0.4rem;
+        gap: 0.5rem;
     }
 
     .download-btn,
     .view-btn {
-        width: 100%;
+        padding: 0.5rem;
         font-size: 0.85rem;
-        padding: 0.6rem 1rem;
-    }
-
-    /* Item Detail Page - More aggressive scaling for mobile */
-    .item-detail-image {
-        max-width: 100%;
-        margin: 1rem 0;
-        transform: scale(0.75);
-        transform-origin: top center;
-    }
-
-    /* Footer */
-    footer {
-        padding: 1.5rem 0.75rem 1rem;
-        margin-top: 2.5rem;
-    }
-
-    .footer-content {
-        gap: 1.5rem;
-    }
-
-    .footer-section h3 {
-        font-size: 1rem;
-    }
-
-    .footer-section p,
-    .footer-section a {
-        font-size: 0.85rem;
-    }
-
-    .social-links {
-        gap: 0.5rem;
-    }
-
-    .social-link {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
-    }
-
-    .footer-bottom {
-        margin: 1rem auto 0;
-        padding-top: 1rem;
-        font-size: 0.8rem;
     }
 }
-/* Small Mobile (≤ 360px) - Extra compact */
-@media (max-width: 360px) {
-    /* Navigation */
-    nav {
-        padding: 0 0.5rem;
-    }
 
-    .logo-text {
-        font-size: 1.1rem;
-    }
-
-    .logo-image {
-        width: 32px;
-        height: 32px;
-    }
-
-    /* Mobile Menu */
-    .mobile-menu {
-        width: 90%;
-        max-width: 260px;
-        padding: 4.5rem 1rem 1rem;
-    }
-
-    .mobile-menu-close {
-        top: 0.75rem;
-        right: 0.75rem;
-        width: 32px;
-        height: 32px;
-        font-size: 1.5rem;
-    }
-
-    .mobile-menu a {
-        padding: 0.875rem;
-        font-size: 0.95rem;
-    }
-
-    /* Hero */
-    .hero {
-        min-height: 50vh;
-    }
-
-    .hero h1 {
-        font-size: clamp(1.35rem, 8vw, 1.75rem);
-    }
-
-    .hero p {
-        font-size: 0.85rem;
-    }
-
-    .cta-button {
-        padding: 0.65rem 1.25rem;
-        font-size: 0.9rem;
-    }
-
-    /* Sections */
-    section {
-        padding: 2rem 0.5rem;
-    }
-
-    /* Items Grid */
+/* Mobile (<= 480px) - Further scaling */
+@media (max-width: 480px) {
     .items-grid {
-        gap: 0.6rem;
+        grid-template-columns: 1fr 1fr; /* Keep 2 columns */
+        gap: 0.5rem; /* Smaller gap */
     }
 
-    /* Item Card - Most aggressive scaling for smallest screens */
     .item-card {
-        transform: scale(0.7);
-        transform-origin: top center;
-    }
-
-    .item-card:hover {
-        transform: scale(0.7) translateY(-2px);
+        width: 100%;
     }
 
     .item-image-container {
-        max-height: 120px;
-        padding: 0.3rem;
+        height: 120px;
+    }
+
+    .item-icon {
+        max-width: 75%;
+        max-height: 75%;
     }
 
     .item-content {
         padding: 0.5rem;
-        gap: 0.35rem;
     }
 
     .item-content h3 {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .item-content p {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 
     .item-meta {
-        font-size: 0.65rem;
+        font-size: 0.75rem;
+        gap: 0.25rem;
+    }
+
+    .item-actions {
+        gap: 0.25rem;
     }
 
     .download-btn,
     .view-btn {
+        padding: 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Extra Small Devices (<360px) - Ultra Compact Scaling */
+@media (max-width: 359px) {
+    .items-grid {
+        grid-template-columns: 1fr 1fr; /* Keep 2 columns */
+        gap: 0.25rem; /* Even smaller gap */
+    }
+
+    .item-card {
+        width: 100%;
+    }
+
+    .item-image-container {
+        height: 90px; /* Smaller image height */
+    }
+
+    .item-icon {
+        max-width: 65%;
+        max-height: 65%;
+    }
+
+    .item-content {
+        padding: 0.25rem; /* Minimal padding */
+    }
+
+    .item-content h3 {
+        font-size: 0.65rem; /* Tiny text */
+        margin-bottom: 0.2rem;
+    }
+
+    .item-content p {
+        font-size: 0.6rem; /* Tiny description */
+        margin-bottom: 0.25rem;
+    }
+
+    .item-meta {
+        font-size: 0.65rem; /* Tiny meta info */
+        gap: 0.2rem;
+    }
+
+    .item-actions {
+        gap: 0.2rem;
+    }
+
+    .download-btn,
+    .view-btn {
+        padding: 0.3rem;
+        font-size: 0.65rem;
+    }
+
+    .cta-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    /* Hero Section scaling */
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero p {
         font-size: 0.75rem;
-        padding: 0.5rem 0.75rem;
     }
 
-    /* Item Detail Page - Most aggressive scaling for smallest screens */
-    .item-detail-image {
-        transform: scale(0.7);
-        transform-origin: top center;
+    /* Header / Navigation scaling */
+    nav {
+        padding: 0 0.25rem;
+        gap: 0.5rem;
     }
 
-    /* Footer */
-    footer {
-        padding: 1.25rem 0.5rem 0.75rem;
-        margin-top: 2rem;
+    .logo-text {
+        font-size: 1rem;
     }
 
+    .nav-links a {
+        font-size: 0.7rem;
+        padding: 0.15rem 0;
+    }
+
+    .hamburger span {
+        width: 18px;
+        height: 2px;
+    }
+
+    /* Footer scaling */
     .footer-content {
-        gap: 1.25rem;
+        gap: 1rem;
     }
 
     .footer-section h3 {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     .footer-section p,
     .footer-section a {
-        font-size: 0.8rem;
-        line-height: 1.5;
+        font-size: 0.7rem;
     }
 
     .social-link {
         width: 28px;
         height: 28px;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     .footer-bottom {
-        margin: 0.75rem auto 0;
-        padding-top: 0.75rem;
-        font-size: 0.75rem;
-    }
-}
-/* Tablet Portrait (641px - 834px) */
-@media (min-width: 641px) and (max-width: 834px) {
-    /* Navigation */
-    .nav-links {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    /* Hero */
-    .hero {
-        min-height: 65vh;
-    }
-
-    .hero h1 {
-        font-size: clamp(1.85rem, 5vw, 2.75rem);
-    }
-
-    .hero p {
-        font-size: clamp(0.95rem, 2.2vw, 1.15rem);
-    }
-
-    /* Items Grid */
-    .items-grid {
-        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-        gap: 1.25rem;
-    }
-
-    /* Item Card - Moderate scaling for tablet portrait */
-    .item-card {
-        transform: scale(0.88);
-        transform-origin: top center;
-    }
-
-    .item-card:hover {
-        transform: scale(0.88) translateY(-4px);
-    }
-
-    .item-image-container {
-        max-height: 160px;
-    }
-
-    .item-content h3 {
-        font-size: 1rem;
-    }
-
-    .item-content p {
-        font-size: 0.9rem;
-    }
-
-    .item-meta {
-        font-size: 0.8rem;
-    }
-
-    .download-btn,
-    .view-btn {
-        font-size: 0.85rem;
-        padding: 0.6rem 1rem;
-    }
-
-    /* Item Detail Page - Moderate scaling for tablet portrait */
-    .item-detail-image {
-        max-width: 360px;
-        transform: scale(0.88);
-        transform-origin: top center;
-    }
-
-    /* Footer */
-    .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-/* Tablet Landscape (835px - 1024px) - Show desktop nav */
-@media (min-width: 835px) and (max-width: 1024px) {
-    .nav-links {
-        display: flex;
-        gap: 1.5rem;
-    }
-
-    .hamburger {
-        display: none;
-    }
-
-    .items-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-
-    /* Item Card - Light scaling for tablet landscape */
-    .item-card {
-        transform: scale(0.92);
-        transform-origin: top center;
-    }
-
-    .item-card:hover {
-        transform: scale(0.92) translateY(-4px);
-    }
-
-    /* Item Detail Page - Light scaling for tablet landscape */
-    .item-detail-image {
-        max-width: 380px;
-        transform: scale(0.92);
-        transform-origin: top center;
-    }
-
-    .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-/* Desktop (1025px+) - Full desktop experience */
-@media (min-width: 1025px) {
-    .nav-links {
-        display: flex;
-    }
-
-    .hamburger {
-        display: none;
-    }
-
-    /* Ensure no scaling on desktop */
-    .item-card {
-        transform: scale(1);
-    }
-
-    .item-card:hover {
-        transform: translateY(-5px);
-    }
-
-    /* Ensure no scaling on desktop for detail images */
-    .item-detail-image {
-        transform: scale(1);
-    }
-}
-/* =============================
-   CONTACT PAGE STYLES
-   ============================= */
-.contact-content {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.contact-info {
-    background: rgba(30, 30, 30, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    transition: all var(--transition-speed) ease;
-}
-
-.contact-info:hover {
-    border-color: rgba(138, 43, 226, 0.3);
-    background: rgba(40, 40, 40, 0.7);
-}
-
-.contact-info h2 {
-    font-size: 1.8rem;
-    color: var(--accent-purple);
-    margin-bottom: 1rem;
-    font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.contact-info p {
-    color: var(--text-gray);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-}
-
-.contact-details {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--glass-border);
-}
-
-.contact-details h3 {
-    font-size: 1.3rem;
-    color: var(--text-white);
-    margin-bottom: 1rem;
-}
-
-.contact-details p {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-light);
-}
-/* =============================
-   DESCRIPTION / ITEM DETAIL PAGE
-   ============================= */
-.item-detail {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.item-detail-content {
-    background: rgba(30, 30, 30, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    transition: all var(--transition-speed) ease;
-}
-
-.item-detail-content:hover {
-    border-color: rgba(138, 43, 226, 0.3);
-    background: rgba(40, 40, 40, 0.7);
-}
-
-.item-detail-header {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.item-detail-header h1 {
-    font-size: 2rem;
-    color: var(--text-white);
-    margin-bottom: 0.5rem;
-    font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.item-detail-meta {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    color: var(--text-gray);
-    font-size: 0.9rem;
-}
-
-.item-detail-meta span {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.item-detail-image {
-    width: 100%;
-    max-width: 400px;
-    aspect-ratio: 4/3;
-    margin: 1.5rem 0;
-    border-radius: 12px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.02);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform var(--transition-speed) ease;
-}
-
-.item-detail-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.item-detail-description {
-    margin: 1.5rem 0;
-    line-height: 1.7;
-    color: var(--text-gray);
-    font-size: 1.05rem;
-}
-
-.item-detail-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-.item-detail-actions .download-btn,
-.item-detail-actions .view-btn {
-    flex: 1;
-    min-width: 150px;
-    text-align: center;
-}
-
-.loading {
-    text-align: center;
-    padding: 3rem;
-    color: var(--text-gray);
-    font-size: 1.1rem;
-}
-
-.error-message {
-    background: rgba(255, 68, 68, 0.15);
-    border: 1px solid rgba(255, 68, 68, 0.3);
-    color: #ff6b6b;
-    padding: 1.5rem;
-    border-radius: 12px;
-    text-align: center;
-    margin: 2rem 0;
-}
-/* =============================
-   RESPONSIVE BREAKPOINTS - CONTACT & DESCRIPTION
-   ============================= */
-
-/* Tablet & Mobile (≤ 834px) */
-@media (max-width: 834px) {
-    /* Contact Page */
-    .contact-info {
-        padding: 1.75rem;
-    }
-
-    .contact-info h2 {
-        font-size: 1.5rem;
-    }
-
-    .contact-info p {
-        font-size: 1rem;
-    }
-
-    .contact-details {
-        margin-top: 1.5rem;
-        padding-top: 1.5rem;
-    }
-
-    .contact-details h3 {
-        font-size: 1.15rem;
-    }
-
-    /* Description Page */
-    .item-detail-content {
-        padding: 1.75rem;
-    }
-
-    .item-detail-header h1 {
-        font-size: 1.6rem;
-    }
-
-    .item-detail-meta {
-        gap: 1rem;
-        font-size: 0.85rem;
-    }
-
-    .item-detail-description {
-        font-size: 1rem;
-    }
-
-    .item-detail-actions {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .item-detail-actions .download-btn,
-    .item-detail-actions .view-btn {
-        width: 100%;
-    }
-}
-
-/* Extra Small Mobile (≤ 480px) */
-@media (max-width: 480px) {
-    /* Contact Page */
-    .contact-info {
-        padding: 1.25rem;
-    }
-
-    .contact-info h2 {
-        font-size: 1.3rem;
-    }
-
-    .contact-info p {
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-
-    .contact-details {
-        margin-top: 1.25rem;
-        padding-top: 1.25rem;
-    }
-
-    .contact-details h3 {
-        font-size: 1.05rem;
-    }
-
-    .contact-details p {
-        font-size: 0.85rem;
-    }
-
-    /* Description Page */
-    .item-detail-content {
-        padding: 1rem;
-    }
-
-    .item-detail-header h1 {
-        font-size: 1.4rem;
-    }
-
-    .item-detail-meta {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .item-detail-image {
-        max-width: 100%;
-        margin: 1rem 0;
-    }
-
-    .item-detail-description {
-        font-size: 0.9rem;
-        margin: 1rem 0;
-    }
-
-    .item-detail-actions {
-        margin-top: 1.5rem;
-    }
-}
-
-/* Small Mobile (≤ 360px) */
-@media (max-width: 360px) {
-    /* Contact Page */
-    .contact-info {
-        padding: 1rem;
-    }
-
-    .contact-info h2 {
-        font-size: 1.2rem;
-    }
-
-    .contact-info p {
-        font-size: 0.85rem;
-    }
-
-    .contact-details h3 {
-        font-size: 1rem;
-    }
-
-    .contact-details p {
-        font-size: 0.8rem;
-    }
-
-    /* Description Page */
-    .item-detail-content {
-        padding: 0.75rem;
-    }
-
-    .item-detail-header h1 {
-        font-size: 1.25rem;
-    }
-
-    .item-detail-meta {
-        font-size: 0.75rem;
-    }
-
-    .item-detail-description {
-        font-size: 0.85rem;
-    }
-
-    .loading {
-        padding: 2rem 1rem;
-        font-size: 1rem;
+        font-size: 0.65rem;
     }
 }
