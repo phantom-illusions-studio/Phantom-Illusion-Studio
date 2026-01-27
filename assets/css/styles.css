@@ -678,63 +678,71 @@ footer {
     }
 }
 
-/* Extra Small Devices (<360px) - Font & Detail Page Icon Scaling */
+/* Extra Small Devices (<360px) - Optimized compact scaling for fonts, padding, header & footer */
 @media (max-width: 359px) {
 
-    /* General font scaling */
-    body, p {
-        font-size: 0.8rem; /* overall body text smaller */
+    /* ================= Header / Navigation ================= */
+    header {
+        padding: 0.4rem 0;
     }
 
-    h1 {
-        font-size: 1.5rem; /* hero / main headings */
-    }
-
-    h2 {
-        font-size: 1.3rem;
-    }
-
-    h3 {
-        font-size: 1rem; /* section/card headings */
-    }
-
-    h4 {
-        font-size: 0.9rem;
-    }
-
-    h5 {
-        font-size: 0.85rem;
-    }
-
-    h6 {
-        font-size: 0.8rem;
-    }
-
-    /* Hero text scaling */
-    .hero h1 {
-        font-size: 1.4rem;
-    }
-
-    .hero p {
-        font-size: 0.7rem;
-    }
-
-    /* CTA button */
-    .cta-button {
-        font-size: 0.85rem;
-        padding: 0.6rem 1rem;
-    }
-
-    /* Nav links */
-    .nav-links a {
-        font-size: 0.65rem;
+    nav {
+        padding: 0 0.4rem;
+        gap: 0.4rem;
     }
 
     .logo-text {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
-    /* Footer text */
+    .nav-links a {
+        font-size: 0.6rem;
+        padding: 0.1rem 0;
+    }
+
+    .hamburger span {
+        width: 16px;
+        height: 2px;
+    }
+
+    /* ================= Hero Section ================= */
+    .hero h1 {
+        font-size: 1.4rem;
+        line-height: 1.15;
+    }
+
+    .hero p {
+        font-size: 0.65rem;
+        line-height: 1.35;
+    }
+
+    .cta-button {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.9rem;
+    }
+
+    /* ================= Sections ================= */
+    section {
+        padding: 2.5rem 0.8rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.35rem;
+    }
+
+    .page-header p {
+        font-size: 0.65rem;
+    }
+
+    /* ================= Footer ================= */
+    footer {
+        padding: 1.8rem 0.8rem;
+    }
+
+    .footer-content {
+        gap: 0.8rem;
+    }
+
     .footer-section h3 {
         font-size: 0.8rem;
     }
@@ -744,14 +752,20 @@ footer {
         font-size: 0.65rem;
     }
 
+    .social-link {
+        width: 26px;
+        height: 26px;
+        font-size: 0.75rem;
+    }
+
     .footer-bottom {
         font-size: 0.6rem;
     }
 
-    /* Detail page icon image */
+    /* ================= Detail Page Icon ================= */
     .detail-page .detail-icon {
-        max-width: 60%;
-        max-height: 60%;
+        max-width: 50%;
+        max-height: 50%;
     }
 }
 
