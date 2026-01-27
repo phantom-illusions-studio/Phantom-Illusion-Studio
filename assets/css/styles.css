@@ -678,110 +678,80 @@ footer {
     }
 }
 
-/* Extra Small Devices (<360px) - Ultra Compact Scaling */
+/* Extra Small Devices (<360px) - Font & Detail Page Icon Scaling */
 @media (max-width: 359px) {
-    .items-grid {
-        grid-template-columns: 1fr 1fr; /* Keep 2 columns */
-        gap: 0.25rem; /* Even smaller gap */
+
+    /* General font scaling */
+    body, p {
+        font-size: 0.8rem; /* overall body text smaller */
     }
 
-    .item-card {
-        width: 100%;
+    h1 {
+        font-size: 1.5rem; /* hero / main headings */
     }
 
-    .item-image-container {
-        height: 90px; /* Smaller image height */
+    h2 {
+        font-size: 1.3rem;
     }
 
-    .item-icon {
-        max-width: 65%;
-        max-height: 65%;
+    h3 {
+        font-size: 1rem; /* section/card headings */
     }
 
-    .item-content {
-        padding: 0.25rem; /* Minimal padding */
+    h4 {
+        font-size: 0.9rem;
     }
 
-    .item-content h3 {
-        font-size: 0.65rem; /* Tiny text */
-        margin-bottom: 0.2rem;
-    }
-
-    .item-content p {
-        font-size: 0.6rem; /* Tiny description */
-        margin-bottom: 0.25rem;
-    }
-
-    .item-meta {
-        font-size: 0.65rem; /* Tiny meta info */
-        gap: 0.2rem;
-    }
-
-    .item-actions {
-        gap: 0.2rem;
-    }
-
-    .download-btn,
-    .view-btn {
-        padding: 0.3rem;
-        font-size: 0.65rem;
-    }
-
-    .cta-button {
-        padding: 0.6rem 1rem;
+    h5 {
         font-size: 0.85rem;
     }
 
-    /* Hero Section scaling */
+    h6 {
+        font-size: 0.8rem;
+    }
+
+    /* Hero text scaling */
     .hero h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .hero p {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 
-    /* Header / Navigation scaling */
-    nav {
-        padding: 0 0.25rem;
-        gap: 0.5rem;
+    /* CTA button */
+    .cta-button {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+
+    /* Nav links */
+    .nav-links a {
+        font-size: 0.65rem;
     }
 
     .logo-text {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
-    .nav-links a {
-        font-size: 0.7rem;
-        padding: 0.15rem 0;
-    }
-
-    .hamburger span {
-        width: 18px;
-        height: 2px;
-    }
-
-    /* Footer scaling */
-    .footer-content {
-        gap: 1rem;
-    }
-
+    /* Footer text */
     .footer-section h3 {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .footer-section p,
     .footer-section a {
-        font-size: 0.7rem;
-    }
-
-    .social-link {
-        width: 28px;
-        height: 28px;
-        font-size: 0.85rem;
+        font-size: 0.65rem;
     }
 
     .footer-bottom {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
+    }
+
+    /* Detail page icon image */
+    .detail-page .detail-icon {
+        max-width: 60%;
+        max-height: 60%;
     }
 }
+
