@@ -105,14 +105,66 @@ class DataService {
                 return null;
             }
 
-            const { data } = window.supabaseClient
+            // Validate inputs
+            if (!bucketName || !filePath) {
+                console.error('Invalid parameters for getPublicUrl:', { bucketName, filePath });
+                return null;
+            }
+
+            const { data, error } = window.supabaseClient
                 .storage
                 .from(bucketName)
                 .getPublicUrl(filePath);
 
-            return data.publicUrl || null;
+            if (error) {
+                console.error('Supabase error getting public URL:', {
+                    bucketName,
+                    filePath,
+                    error: error.message,
+                    code: error.code,
+                    details: error.details
+                });
+                return null;
+            }
+
+            const publicUrl = data.publicUrl;
+            
+            // Fallback check: Validate the public URL format
+            if (!publicUrl || typeof publicUrl !== 'string') {
+                console.error('Invalid public URL returned:', {
+                    bucketName,
+                    filePath,
+                    publicUrl
+                });
+                return null;
+            }
+
+            // Additional validation: Check if URL is properly formatted
+            try {
+                new URL(publicUrl);
+            } catch (urlError) {
+                console.error('Public URL is not a valid URL:', {
+                    bucketName,
+                    filePath,
+                    publicUrl,
+                    urlError
+                });
+                return null;
+            }
+
+            // Fallback check: Ensure URL contains expected Supabase domain
+            if (!publicUrl.includes('supabase') && !publicUrl.includes('storage')) {
+                console.warn('Public URL may not be from Supabase storage:', publicUrl);
+            }
+
+            return publicUrl;
         } catch (error) {
-            console.error('Error getting public URL:', error);
+            console.error('Unexpected error getting public URL:', {
+                bucketName,
+                filePath,
+                error: error.message,
+                stack: error.stack
+            });
             return null;
         }
     }
@@ -135,7 +187,9 @@ class DataService {
             const { data, error } = await window.supabaseClient
                 .storage
                 .from(bucketName)
-                .upload(filePath, file);
+                .upload(filePath, file, {
+                    cacheControl: 'public, max-age=31536000'
+                });
 
             if (error) throw error;
             return data || null;

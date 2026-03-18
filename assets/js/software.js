@@ -156,13 +156,21 @@ async function handleDownload(event, itemId, storagePath) {
         );
 
         if (publicUrl) {
-            window.open(publicUrl, '_blank');
+            // Create a temporary anchor element with download attribute for direct CDN download
+            const link = document.createElement('a');
+            link.href = publicUrl;
+            link.download = storagePath.split('/').pop() || 'download';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         } else {
-            showErrorMessage('Download URL not available.');
+            console.error('Public URL is null for storagePath:', storagePath);
+            showErrorMessage('Download URL not available. Please contact support.');
         }
     } catch (error) {
         console.error('Error handling download:', error);
-        showErrorMessage('Failed to initiate download.');
+        showErrorMessage('Failed to initiate download. Please try again.');
     }
 }
 
