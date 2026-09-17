@@ -1,0 +1,175 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - navigation "Primary" [ref=e4]:
+      - link "Phantom Illusions Studio — home" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+        - img "Phantom Illusions Studio logo" [ref=e6]
+        - generic [ref=e7]:
+          - strong [ref=e8]: Phantom Illusions
+          - generic [ref=e9]: Studio
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - link "Catalogue" [ref=e12] [cursor=pointer]:
+            - /url: catalogue.html
+        - listitem [ref=e13]:
+          - link "Apps" [ref=e14] [cursor=pointer]:
+            - /url: apps.html
+        - listitem [ref=e15]:
+          - link "Games" [ref=e16] [cursor=pointer]:
+            - /url: games.html
+        - listitem [ref=e17]:
+          - link "Software" [ref=e18] [cursor=pointer]:
+            - /url: software.html
+        - listitem [ref=e19]:
+          - link "Studio" [ref=e20] [cursor=pointer]:
+            - /url: contact.html
+  - dialog "Menu" [ref=e21]:
+    - button "Close menu" [ref=e22] [cursor=pointer]: ×
+    - link "Home" [ref=e23] [cursor=pointer]:
+      - /url: index.html
+    - link "Catalogue" [ref=e24] [cursor=pointer]:
+      - /url: catalogue.html
+    - link "Apps" [ref=e25] [cursor=pointer]:
+      - /url: apps.html
+    - link "Games" [ref=e26] [cursor=pointer]:
+      - /url: games.html
+    - link "Software" [ref=e27] [cursor=pointer]:
+      - /url: software.html
+    - link "Studio" [ref=e28] [cursor=pointer]:
+      - /url: contact.html
+  - main [ref=e29]:
+    - region [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - paragraph [ref=e33]: Phantom Illusions Studio — Apps · Games · Software
+          - heading "Software and games, from one studio." [level=1] [ref=e34]
+          - paragraph [ref=e35]: We design and publish our own catalogue of applications, games and desktop software. Browse the collection, open a product page, and get the release directly from the studio.
+          - generic [ref=e36]:
+            - link "Browse the catalogue" [ref=e37] [cursor=pointer]:
+              - /url: catalogue.html
+            - link "Contact the studio" [ref=e38] [cursor=pointer]:
+              - /url: contact.html
+        - complementary "Studio index" [ref=e39]:
+          - list [ref=e41]:
+            - listitem [ref=e42]:
+              - link "Applications —" [ref=e43] [cursor=pointer]:
+                - /url: apps.html
+                - generic [ref=e44]: Applications
+                - generic [ref=e45]: —
+            - listitem [ref=e46]:
+              - link "Games —" [ref=e47] [cursor=pointer]:
+                - /url: games.html
+                - generic [ref=e48]: Games
+                - generic [ref=e49]: —
+            - listitem [ref=e50]:
+              - link "Software —" [ref=e51] [cursor=pointer]:
+                - /url: software.html
+                - generic [ref=e52]: Software
+                - generic [ref=e53]: —
+          - generic [ref=e54]:
+            - text: "Latest release:"
+            - strong [ref=e55]: loading…
+    - region [ref=e56]:
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - heading "Featured releases" [level=2] [ref=e60]
+          - paragraph [ref=e61]: Selected products from the studio catalogue.
+        - link "View all →" [ref=e62] [cursor=pointer]:
+          - /url: catalogue.html
+    - region [ref=e77]:
+      - generic [ref=e78]:
+        - generic [ref=e80]:
+          - heading "Browse by category" [level=2] [ref=e81]
+          - paragraph [ref=e82]: Each category is its own shelf of the catalogue.
+        - generic [ref=e83]:
+          - link [ref=e84] [cursor=pointer]:
+            - /url: apps.html
+            - heading "Apps" [level=3] [ref=e85]
+            - paragraph [ref=e86]: Mobile and desktop applications published by the studio.
+            - text: — products
+          - link [ref=e87] [cursor=pointer]:
+            - /url: games.html
+            - heading "Games" [level=3] [ref=e88]
+            - paragraph [ref=e89]: Playable releases — downloads and web-playable titles.
+            - text: — products
+          - link [ref=e90] [cursor=pointer]:
+            - /url: software.html
+            - heading "Software" [level=3] [ref=e91]
+            - paragraph [ref=e92]: Desktop and professional-grade software solutions.
+            - text: — products
+    - region [ref=e93]:
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - heading "Latest releases" [level=2] [ref=e97]
+          - paragraph [ref=e98]: Ordered by release date across the whole catalogue.
+        - link "Full catalogue →" [ref=e99] [cursor=pointer]:
+          - /url: catalogue.html
+    - region [ref=e114]:
+      - generic [ref=e116]:
+        - generic [ref=e117]:
+          - paragraph [ref=e118]: The studio
+          - heading "One team, one catalogue." [level=2] [ref=e119]
+          - paragraph [ref=e120]: Phantom Illusions Studio designs, builds and publishes its own software. Every product page tells you what the release does, which version is current, and exactly where to get it.
+          - generic [ref=e121]:
+            - link "About & contact" [ref=e122] [cursor=pointer]:
+              - /url: contact.html
+            - link "Browse everything →" [ref=e123] [cursor=pointer]:
+              - /url: catalogue.html
+        - list [ref=e124]:
+          - listitem [ref=e125]:
+            - generic [ref=e126]: Email
+            - link "phantomillusionsstudio@gmail.com" [ref=e127] [cursor=pointer]:
+              - /url: mailto:phantomillusionsstudio@gmail.com
+          - listitem [ref=e128]:
+            - generic [ref=e129]: Phone
+            - link "+256 778-591487" [ref=e130] [cursor=pointer]:
+              - /url: tel:+256778591487
+          - listitem [ref=e131]:
+            - generic [ref=e132]: Catalogue
+            - link "All products →" [ref=e133] [cursor=pointer]:
+              - /url: catalogue.html
+  - contentinfo [ref=e134]:
+    - generic [ref=e135]:
+      - generic [ref=e136]:
+        - generic [ref=e137]:
+          - img "Phantom Illusions Studio logo" [ref=e138]
+          - strong [ref=e139]: Phantom Illusions Studio
+        - paragraph [ref=e140]: Independent studio publishing its own apps, games and software. One catalogue, direct from the team that builds it.
+      - generic [ref=e141]:
+        - heading "Catalogue" [level=3] [ref=e142]
+        - link "All products" [ref=e143] [cursor=pointer]:
+          - /url: catalogue.html
+        - link "Apps" [ref=e144] [cursor=pointer]:
+          - /url: apps.html
+        - link "Games" [ref=e145] [cursor=pointer]:
+          - /url: games.html
+        - link "Software" [ref=e146] [cursor=pointer]:
+          - /url: software.html
+      - generic [ref=e147]:
+        - heading "Studio" [level=3] [ref=e148]
+        - link "About & contact" [ref=e149] [cursor=pointer]:
+          - /url: contact.html
+        - link "Staff sign-in" [ref=e150] [cursor=pointer]:
+          - /url: login.html
+        - generic [ref=e151]:
+          - link "GitHub" [ref=e152] [cursor=pointer]:
+            - /url: "#"
+            - img "GitHub" [ref=e153]
+          - link "X / Twitter" [ref=e154] [cursor=pointer]:
+            - /url: https://x.com/studio_pha81508
+            - img "X / Twitter" [ref=e155]
+          - link "Instagram" [ref=e156] [cursor=pointer]:
+            - /url: https://www.instagram.com/phantomillusionsstudio/
+            - img "Instagram" [ref=e157]
+          - link "Reddit" [ref=e158] [cursor=pointer]:
+            - /url: https://www.reddit.com/user/Expensive-Towel-8998/
+            - img "Reddit" [ref=e159]
+          - link "YouTube" [ref=e160] [cursor=pointer]:
+            - /url: "#"
+            - img "YouTube" [ref=e161]
+    - generic [ref=e163]:
+      - generic [ref=e164]: © 2026 Phantom Illusions Studio. All rights reserved.
+      - link "Staff sign-in" [ref=e165] [cursor=pointer]:
+        - /url: login.html

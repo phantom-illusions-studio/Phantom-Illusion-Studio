@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phantom Illusions Studio</title>
-    <!-- Google Fonts -->
+    <title>Phantom Illusions Studio — Apps, Games &amp; Software</title>
+    <meta name="description" content="Phantom Illusions Studio: a technology and game studio. Browse our catalogue of apps, games and software.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/animations.css">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -15,120 +15,139 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" href="favicon.ico">
-
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://phantom-illusions-studio.com/#organization",
-      "name": "Phantom Illusions Studio",
-      "url": "https://phantom-illusions-studio.com",
-      "logo": "https://phantom-illusions-studio.com/logo.png",
-      "description": "A pioneering Ugandan technology company delivering global digital innovation across software engineering, web development, cloud hosting solutions, and specialized digital design.",
-      "foundingDate": "2022",
-      "foundingLocation": {
-        "@type": "Place",
-        "name": "Uganda"
-      },
-      "sameAs": [
-        "https://github.com/phantom-illusions-studio",
-        "https://x.com/studio_pha81508",
-        "https://www.instagram.com/phantomillusionsstudio/"
-      ],
-      "founder": [
-        {
-          "@type": "Person",
-          "@id": "https://phantom-illusions-studio.com/#andrew-taremwa",
-          "name": "Andrew Taremwa",
-          "jobTitle": "Co-Founder & Head of Game Development",
-          "sameAs": [
-            "https://www.linkedin.com/in/taremwa-andrew-294b033aa",
-            "https://www.reddit.com/user/Expensive-Towel-8998"
-          ]
-        },
-        {
-          "@type": "Person",
-          "@id": "https://phantom-illusions-studio.com/#mwanani-ezra",
-          "name": "Mwanani Ezra",
-          "jobTitle": "Co-Founder",
-          "sameAs": [
-            "https://github.com/mrblaqbeatle"
-          ]
-        }
-      ],
-      "subOrganization": [
-        {
-          "@type": "Organization",
-          "@id": "https://phantom-illusions-studio.com/#taremwa-studios",
-          "name": "Taremwa Studios",
-          "description": "The dedicated game development branch of Phantom Illusions Studio, recognized for developing Uganda's first MMORPG, native multiplayer, and monetized gaming experiences.",
-          "founder": {
-            "@type": "Person",
-            "@id": "https://phantom-illusions-studio.com/#andrew-taremwa"
-          },
-          "sameAs": [
-            "https://github.com/taremwastudios",
-            "https://x.com/TaremwaStudios",
-            "https://www.reddit.com/user/taremwa-studios"
-          ]
-        },
-        {
-          "@type": "Organization",
-          "@id": "https://phantom-illusions-studio.com/#studio-ai",
-          "name": "Studio AI",
-          "description": "The specialized artificial intelligence branch of Phantom Illusions Studio, focused on building offline-first AI applications and intelligent developer infrastructure."
-        }
-      ]
-    }
-    </script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo-section">
-                <img src="assets/images/logo.png" alt="Phantom Illusions Logo" class="logo-image">
-                <div class="logo-text">Phantom Illusions</div>
-            </div>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <nav aria-label="Primary">
+            <a class="brand" href="index.html" aria-label="Phantom Illusions Studio — home">
+                <img src="assets/images/logo.png" alt="Phantom Illusions Studio logo">
+                <span class="brand-name"><strong>Phantom Illusions</strong><span>Studio</span></span>
+            </a>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
                 <li><a href="apps.html">Apps</a></li>
+                <li><a href="games.html">Games</a></li>
                 <li><a href="software.html">Software</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html">Studio</a></li>
             </ul>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
             </button>
         </nav>
     </header>
 
-    <!-- Mobile Menu Overlay -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu">
         <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">×</button>
         <a href="index.html" class="active">Home</a>
+        <a href="catalogue.html">Catalogue</a>
         <a href="apps.html">Apps</a>
+        <a href="games.html">Games</a>
         <a href="software.html">Software</a>
-        <a href="contact.html">Contact</a>
-        <a href="login.html">Login</a>
+        <a href="contact.html">Studio</a>
     </div>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Premium Digital Creations</h1>
-                <p>Innovative applications and software crafted with precision and passion</p>
-                <a href="apps.html" class="cta-button">Explore Our Work</a>
+    <main id="main">
+        <section class="masthead" aria-labelledby="page-title">
+            <div class="wrap masthead-grid">
+                <div>
+                    <p class="eyebrow">Phantom Illusions Studio — Apps · Games · Software</p>
+                    <h1 id="page-title">Software and games, <span class="accent">from one studio.</span></h1>
+                    <p class="lede">We design and publish our own catalogue of applications, games and desktop software. Browse the collection, open a product page, and get the release directly from the studio.</p>
+                    <div class="masthead-actions">
+                        <a href="catalogue.html" class="btn btn-primary">Browse the catalogue</a>
+                        <a href="contact.html" class="btn btn-secondary">Contact the studio</a>
+                    </div>
+                </div>
+                <aside class="studio-index" aria-label="Studio index">
+                    <header>Studio index</header>
+                    <ul class="index-rows">
+                        <li><a href="apps.html"><span class="index-label">Applications</span><span class="index-value" id="idx-apps">—</span></a></li>
+                        <li><a href="games.html"><span class="index-label">Games</span><span class="index-value" id="idx-games">—</span></a></li>
+                        <li><a href="software.html"><span class="index-label">Software</span><span class="index-value" id="idx-software">—</span></a></li>
+                    </ul>
+                    <div class="index-latest" id="idx-latest">Latest release: <strong>loading…</strong></div>
+                </aside>
             </div>
         </section>
 
-        <section class="featured">
-            <h2>Featured Creations</h2>
-            <div class="items-grid" id="featured-items">
-                <!-- Featured items will be loaded dynamically -->
-                <div class="loading">Loading featured items...</div>
+        <section class="section" aria-labelledby="featured-h">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <h2 id="featured-h">Featured releases</h2>
+                        <p>Selected products from the studio catalogue.</p>
+                    </div>
+                    <a class="section-link" href="catalogue.html">View all →</a>
+                </div>
+                <div class="product-grid" id="featured-items">
+                    <div class="skeleton-grid" aria-hidden="true"><div class="skeleton"><i></i><i></i><i></i></div><div class="skeleton"><i></i><i></i><i></i></div><div class="skeleton"><i></i><i></i><i></i></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="browse-h" style="padding-top:0">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <h2 id="browse-h">Browse by category</h2>
+                        <p>Each category is its own shelf of the catalogue.</p>
+                    </div>
+                </div>
+                <div class="cat-grid">
+                    <a class="cat-tile" href="apps.html">
+                        <h3>Apps</h3>
+                        <p>Mobile and desktop applications published by the studio.</p>
+                        <span class="cat-count" id="cat-count-apps">— products</span>
+                    </a>
+                    <a class="cat-tile" href="games.html">
+                        <h3>Games</h3>
+                        <p>Playable releases — downloads and web-playable titles.</p>
+                        <span class="cat-count" id="cat-count-games">— products</span>
+                    </a>
+                    <a class="cat-tile" href="software.html">
+                        <h3>Software</h3>
+                        <p>Desktop and professional-grade software solutions.</p>
+                        <span class="cat-count" id="cat-count-software">— products</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="latest-h" style="padding-top:0">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <h2 id="latest-h">Latest releases</h2>
+                        <p>Ordered by release date across the whole catalogue.</p>
+                    </div>
+                    <a class="section-link" href="catalogue.html">Full catalogue →</a>
+                </div>
+                <div class="product-grid" id="latest-grid">
+                    <div class="skeleton-grid" aria-hidden="true"><div class="skeleton"><i></i><i></i><i></i></div><div class="skeleton"><i></i><i></i><i></i></div><div class="skeleton"><i></i><i></i><i></i></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="studio-h" style="padding-top:0">
+            <div class="wrap">
+                <div class="studio-strip">
+                    <div>
+                        <p class="eyebrow">The studio</p>
+                        <h2 id="studio-h">One team, one catalogue.</h2>
+                        <p>Phantom Illusions Studio designs, builds and publishes its own software. Every product page tells you what the release does, which version is current, and exactly where to get it.</p>
+                        <div class="masthead-actions">
+                            <a href="contact.html" class="btn btn-secondary">About &amp; contact</a>
+                            <a href="catalogue.html" class="btn btn-ghost">Browse everything →</a>
+                        </div>
+                    </div>
+                    <ul class="contact-lines">
+                        <li><span class="k">Email</span><a href="mailto:phantomillusionsstudio@gmail.com">phantomillusionsstudio@gmail.com</a></li>
+                        <li><span class="k">Phone</span><a href="tel:+256778591487">+256 778-591487</a></li>
+                        <li><span class="k">Catalogue</span><a href="catalogue.html">All products →</a></li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
@@ -136,85 +155,43 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Phantom Illusions Studio</h3>
-                <p>Premium digital studio creating innovative applications and software solutions.</p>
+                <div class="footer-brand">
+                    <img src="assets/images/logo.png" alt="Phantom Illusions Studio logo">
+                    <strong>Phantom Illusions Studio</strong>
+                </div>
+                <p>Independent studio publishing its own apps, games and software. One catalogue, direct from the team that builds it.</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
-                <a href="apps.html">Applications</a>
+                <h3>Catalogue</h3>
+                <a href="catalogue.html">All products</a>
+                <a href="apps.html">Apps</a>
+                <a href="games.html">Games</a>
                 <a href="software.html">Software</a>
-                <a href="contact.html">Contact Us</a>
             </div>
             <div class="footer-section">
-                <h3>Connect With Us</h3>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/images/github.png" alt="GitHub" width="32" height="32">
-                    </a>
-                    <a href="https://x.com/studio_pha81508" class="social-link" aria-label="X / Twitter" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/images/twitter.png" alt="X / Twitter" width="32" height="32">
-                    </a>
-                    <a href="https://www.instagram.com/phantomillusionsstudio/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/images/instagram.png" alt="Instagram" width="32" height="32">
-                    </a>
-                    <a href="https://www.reddit.com/user/Expensive-Towel-8998/" class="social-link" aria-label="Reddit" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/images/reddit.png" alt="Reddit" width="32" height="32">
-                    </a>
-                    <a href="#" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/images/youtube.png" alt="YouTube" width="32" height="32">
-                    </a>
+                <h3>Studio</h3>
+                <a href="contact.html">About &amp; contact</a>
+                <div class="social-links" style="margin-top:1rem">
+                    <a href="#" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><img src="assets/images/github.png" alt="GitHub" width="20" height="20"></a>
+                    <a href="https://x.com/studio_pha81508" class="social-link" aria-label="X / Twitter" target="_blank" rel="noopener noreferrer"><img src="assets/images/twitter.png" alt="X / Twitter" width="20" height="20"></a>
+                    <a href="https://www.instagram.com/phantomillusionsstudio/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><img src="assets/images/instagram.png" alt="Instagram" width="20" height="20"></a>
+                    <a href="https://www.reddit.com/user/Expensive-Towel-8998/" class="social-link" aria-label="Reddit" target="_blank" rel="noopener noreferrer"><img src="assets/images/reddit.png" alt="Reddit" width="20" height="20"></a>
+                    <a href="#" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><img src="assets/images/youtube.png" alt="YouTube" width="20" height="20"></a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Phantom Illusions Studio. All rights reserved.</p>
+            <div class="wrap">
+                <span>© 2026 Phantom Illusions Studio. All rights reserved.</span>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabaseClient.js"></script>
     <script src="assets/js/dataService.js"></script>
+    <script src="assets/js/cards.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        // Mobile Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-        function toggleMobileMenu() {
-            const isOpen = mobileMenu.classList.contains('active');
-            
-            if (isOpen) {
-                mobileMenu.classList.remove('active');
-                mobileOverlay.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            } else {
-                mobileMenu.classList.add('active');
-                mobileOverlay.classList.add('active');
-                hamburger.setAttribute('aria-expanded', 'true');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        hamburger.addEventListener('click', toggleMobileMenu);
-        mobileMenuClose.addEventListener('click', toggleMobileMenu);
-        mobileOverlay.addEventListener('click', toggleMobileMenu);
-
-        // Close menu when clicking outside or on a link
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-                toggleMobileMenu();
-            }
-        });
-
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                toggleMobileMenu();
-            }
-        });
-    </script>
+    <script src="assets/js/nav.js"></script>
 </body>
 </html>

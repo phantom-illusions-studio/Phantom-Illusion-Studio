@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games — Phantom Illusions Studio</title>
+    <meta name="description" content="Playable releases from the studio — downloads and web-playable titles. Open a product for version, release and access details.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <nav aria-label="Primary">
+            <a class="brand" href="index.html" aria-label="Phantom Illusions Studio — home">
+                <img src="assets/images/logo.png" alt="Phantom Illusions Studio logo">
+                <span class="brand-name"><strong>Phantom Illusions</strong><span>Studio</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="games.html" class="active" aria-current="page">Apps</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="software.html">Software</a></li>
+                <li><a href="contact.html">Studio</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </nav>
+    </header>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">×</button>
+        <a href="index.html">Home</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="games.html" class="active">Apps</a>
+        <a href="games.html">Games</a>
+        <a href="software.html">Software</a>
+        <a href="contact.html">Studio</a>
+    </div>
+
+    <main id="main">
+        <div class="page-head">
+            <div class="wrap">
+                <p class="crumbs"><a href="index.html">Studio</a> / <a href="catalogue.html">Catalogue</a> / Games</p>
+                <h1>Games</h1>
+                <p class="sub">Playable releases from the studio — downloads and web-playable titles. Open a product for version, release and access details.</p>
+                <p class="count-line" id="games-count" role="status">Loading…</p>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="toolbar" role="search" aria-label="Filter games">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                    <input type="search" id="q" placeholder="Search games…" aria-label="Search games" autocomplete="off">
+                </div>
+                <button type="button" class="filter-toggle" id="filterToggle" aria-expanded="false" aria-controls="filterPanel">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+                    <span>Filters</span>
+                    <span class="filter-count" id="filterCount" hidden>0</span>
+                    <span class="filter-summary" id="filterSummary">All products</span>
+                    <span class="chev" aria-hidden="true">v</span>
+                </button>
+                <div class="filter-panel" id="filterPanel">
+                    <span class="filter-group-label">Availability</span>
+                <div class="seg" data-seg="dist" role="group" aria-label="Availability">
+                    <button type="button" data-value="all" aria-pressed="true">Any access</button>
+                    <button type="button" data-value="file" aria-pressed="false">Download</button>
+                    <button type="button" data-value="link" aria-pressed="false">Link</button>
+                </div>
+                    <span class="filter-group-label">Sort by</span>
+                <select class="sort-select" id="sort" aria-label="Sort games">
+                    <option value="newest">Newest first</option>
+                    <option value="name">Name A–Z</option>
+                </select>
+                </div>
+            </div>
+            <section class="section" style="padding-top:0.5rem" aria-label="Games">
+                <div class="product-grid" id="games-grid">
+                    <div class="skeleton-grid" aria-hidden="true"><div class="skeleton"><i></i><i></i><i></i></div><div class="skeleton"><i></i><i></i><i></i></div><div class="skeleton"><i></i><i></i><i></i></div></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand"><img src="assets/images/logo.png" alt="Phantom Illusions Studio logo"><strong>Phantom Illusions Studio</strong></div>
+                <p>Independent studio publishing its own apps, games and software. One catalogue, direct from the team that builds it.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Catalogue</h3>
+                <a href="catalogue.html">All products</a>
+                <a href="apps.html">Apps</a>
+                <a href="games.html">Games</a>
+                <a href="software.html">Software</a>
+            </div>
+            <div class="footer-section">
+                <h3>Studio</h3>
+                <a href="contact.html">About &amp; contact</a>
+                <div class="social-links" style="margin-top:1rem">
+                    <a href="#" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><img src="assets/images/github.png" alt="GitHub" width="20" height="20"></a>
+                    <a href="https://x.com/studio_pha81508" class="social-link" aria-label="X / Twitter" target="_blank" rel="noopener noreferrer"><img src="assets/images/twitter.png" alt="X / Twitter" width="20" height="20"></a>
+                    <a href="https://www.instagram.com/phantomillusionsstudio/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><img src="assets/images/instagram.png" alt="Instagram" width="20" height="20"></a>
+                    <a href="https://www.reddit.com/user/Expensive-Towel-8998/" class="social-link" aria-label="Reddit" target="_blank" rel="noopener noreferrer"><img src="assets/images/reddit.png" alt="Reddit" width="20" height="20"></a>
+                    <a href="#" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><img src="assets/images/youtube.png" alt="YouTube" width="20" height="20"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><div class="wrap"><span>© 2026 Phantom Illusions Studio. All rights reserved.</span></div></div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+    <script src="assets/js/dataService.js"></script>
+    <script src="assets/js/cards.js"></script>
+    <script src="assets/js/filters.js"></script>
+    <script src="assets/js/games.js"></script>
+    <script src="assets/js/nav.js"></script>
+</body>
+</html>

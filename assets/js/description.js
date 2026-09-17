@@ -1,211 +1,133 @@
-/**
- * Description Page Script
- * Handles item detail functionality
- */
-document.addEventListener('DOMContentLoaded', function() {
-    initDescriptionPage();
-});
+/* Product detail. Backend: getItemById(?id=). Download flow identical to catalogue. */
+document.addEventListener('DOMContentLoaded', function () { initDescriptionPage(); });
 
-/**
- * Initialize description page
- */
 async function initDescriptionPage() {
-    try {
-        // Get item ID from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const itemId = urlParams.get('id');
-
-        if (!itemId) {
-            showErrorMessage('No item ID provided.');
-            return;
-        }
-
-        // Load item details
-        await loadItemDetails(itemId);
-
-        // Add animations
-        addPageAnimations();
-
-    } catch (error) {
-        console.error('Error initializing description page:', error);
-        showErrorMessage('Failed to load item details. Please try again.');
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var itemId = params.get('id');
+    if (!itemId) {
+      renderMessage('No product selected', 'Choose a product from the catalogue to view its details.', 'catalogue.html', 'Browse the catalogue');
+      return;
     }
+    await loadItemDetails(itemId);
+  } catch (err) {
+    console.error('Error initializing description page:', err);
+    renderMessage('Could not load this product', 'Check your connection and try again.', 'catalogue.html', 'Back to catalogue');
+  }
 }
 
-/**
- * Load item details from Supabase
- * @param {string} itemId - Item ID
- */
 async function loadItemDetails(itemId) {
-    const detailContainer = document.getElementById('item-detail-content');
-    if (!detailContainer) {
-        console.error('Container element #item-detail-content not found');
-        return;
+  var container = document.getElementById('item-detail-content');
+  if (!container) return;
+  try {
+    var item = await window.dataService.getItemById(itemId);
+    if (!item) {
+      renderMessage('Product not found', 'It may have been unpublished or removed.', 'catalogue.html', 'Back to catalogue');
+      return;
     }
-
-    try {
-        // Show loading state
-        detailContainer.innerHTML = '<div class="loading">Loading item details...</div>';
-
-        // Fetch item details
-        const item = await window.dataService.getItemById(itemId);
-
-        if (!item) {
-            detailContainer.innerHTML = '<div class="loading">Item not found.</div>';
-            return;
-        }
-
-        // Render item details
-        renderItemDetails(item, detailContainer);
-
-    } catch (error) {
-        console.error('Error loading item details:', error);
-        detailContainer.innerHTML = '<div class="loading">Failed to load item details. Please try again later.</div>';
-    }
+    await renderItemDetails(item, container);
+  } catch (err) {
+    console.error('Error loading item details:', err);
+    renderMessage('Could not load this product', 'Check your connection and try again.', 'catalogue.html', 'Back to catalogue');
+  }
 }
 
-/**
- * Render item details
- * @param {Object} item - Item data
- * @param {HTMLElement} container - Container element
- */
+function renderMessage(title, body, href, label) {
+  var container = document.getElementById('item-detail-content');
+  if (!container) return;
+  document.title = title + ' — Phantom Illusions Studio';
+  container.innerHTML = window.PhantomCards.stateHTML(title, body, href, label);
+}
+
 async function renderItemDetails(item, container) {
-    // Get icon URL
-    let iconUrl = 'assets/images/placeholder-icon.png';
-    if (item.icon_path) {
-        try {
-            const publicUrl = await window.dataService.getPublicUrl(
-                item.icon_bucket || window.STORAGE_BUCKETS.ICONS,
-                item.icon_path
-            );
-            if (publicUrl) {
-                iconUrl = publicUrl;
-            }
-        } catch (error) {
-            console.error('Error getting icon URL:', error);
-        }
+  var esc = window.PhantomCards.escapeHtml;
+  var iconUrl = await window.PhantomCards.iconUrlFor(item);
+  var release = formatDate(item.release_date);
+  var distLabel = item.distribution_type === 'file' ? 'Direct download' : (item.distribution_type === 'link' ? 'External link' : '—');
+  var type = esc(item.item_type || 'product');
+  document.title = (item.name || 'Product') + ' — Phantom Illusions Studio';
+
+  var backHref = item.item_type === 'app' ? 'apps.html' : (item.item_type === 'game' ? 'games.html' : (item.item_type === 'software' ? 'software.html' : 'catalogue.html'));
+  var plural = item.item_type === 'software' ? 'software' : (item.item_type ? item.item_type + 's' : 'catalogue');
+  var backLabel = 'Back to ' + plural;
+
+  container.innerHTML =
+    '<p class="crumbs"><a href="index.html">Studio</a> / <a href="catalogue.html">Catalogue</a> / <span>' + type + '</span></p>' +
+    '<div class="detail-layout">' +
+      '<aside class="detail-side" aria-label="Product facts">' +
+        '<div class="detail-art"><img src="' + esc(iconUrl) + '" alt="' + esc(item.name) + ' artwork" onerror="this.outerHTML=\'<span class=&quot;p-icon-fallback&quot; aria-hidden=&quot;true&quot;>' + esc((item.name || '?').trim().charAt(0).toUpperCase()) + '</span>\'"></div>' +
+        '<table class="fact-table"><tbody>' +
+          factRow('Type', type) +
+          factRow('Version', 'v' + esc(item.version || '—')) +
+          factRow('Released', esc(release)) +
+          factRow('Availability', esc(distLabel)) +
+          (item.distribution_type === 'link' && item.external_url ? factRow('Destination', '<a href="' + esc(item.external_url) + '" target="_blank" rel="noopener noreferrer" style="color:var(--brand-ink)">' + esc(hostOf(item.external_url)) + '</a>') : '') +
+        '</tbody></table>' +
+        '<div class="p-actions">' + detailActions(item) + '</div>' +
+      '</aside>' +
+      '<div class="detail-main">' +
+        '<a class="back-link" href="' + backHref + '">← ' + esc(backLabel) + '</a>' +
+        '<div class="p-badges" style="margin-top:1rem"><span class="badge badge-type-' + esc(String(item.item_type || '').toLowerCase()) + '">' + type + '</span><span class="badge badge-version">v' + esc(item.version || '—') + '</span></div>' +
+        '<h1>' + esc(item.name) + '</h1>' +
+        '<p class="detail-short">' + esc(item.short_description || '') + '</p>' +
+        '<div class="detail-actions-row">' + detailActions(item, true) + '</div>' +
+        '<div class="detail-body"><h2>About this release</h2><p>' + esc(item.full_description || item.short_description || 'No description published yet.') + '</p></div>' +
+      '</div>' +
+    '</div>';
+
+  var dl = container.querySelector('[data-dl]');
+  if (dl) dl.addEventListener('click', function (e) { e.preventDefault(); handleDetailDownload(item.id, item.storage_path); });
+}
+
+function factRow(k, v) {
+  return '<tr><th scope="row">' + window.PhantomCards.escapeHtml(k) + '</th><td>' + v + '</td></tr>';
+}
+
+function detailActions(item, large) {
+  var cls = large ? 'btn' : 'btn btn-sm';
+  if (!item.is_published) return '<span style="font-size:.85rem;color:var(--text-faint)">Not currently available.</span>';
+  if (item.distribution_type === 'file') {
+    return '<button type="button" class="' + cls + ' btn-primary" data-dl style="' + (large ? '' : 'flex:1') + '">Get · v' + window.PhantomCards.escapeHtml(item.version || '') + '</button>' +
+      (large ? '' : '');
+  }
+  if (item.distribution_type === 'link') {
+    return '<a class="' + cls + ' btn-primary" href="' + window.PhantomCards.escapeHtml(item.external_url || '#') + '" target="_blank" rel="noopener noreferrer">Open product</a>';
+  }
+  return '';
+}
+
+function formatDate(value) {
+  if (!value) return '—';
+  var d = new Date(value);
+  if (isNaN(d)) return '—';
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function hostOf(url) {
+  try { return new URL(url).hostname; } catch (err) { return url; }
+}
+
+async function handleDetailDownload(itemId, storagePath) {
+  try {
+    var publicUrl = await window.dataService.getPublicUrl(window.STORAGE_BUCKETS.DOWNLOADS, storagePath);
+    if (publicUrl) {
+      var link = document.createElement('a');
+      link.href = publicUrl;
+      link.download = String(storagePath || '').split('/').pop() || 'download';
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      window.PhantomCards.showToast('Download URL not available. Please contact support.', 'error');
     }
-
-    // Format release date
-    const releaseDate = new Date(item.release_date).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-
-    // Create detail HTML
-    container.innerHTML = `
-        <div class="detail-header fade-in">
-            <img src="${iconUrl}" alt="${item.name} icon" class="detail-icon" onerror="this.src='assets/images/placeholder-icon.png'">
-            <h1 class="detail-title">${item.name}</h1>
-            <div class="detail-meta">
-                <span><strong>Type:</strong> ${item.item_type}</span>
-                <span><strong>Version:</strong> ${item.version}</span>
-                <span><strong>Released:</strong> ${releaseDate}</span>
-            </div>
-        </div>
-
-        <div class="detail-description fade-in">
-            <h2>Description</h2>
-            <p>${item.full_description}</p>
-        </div>
-
-        <div class="detail-actions fade-in">
-            ${getActionButton(item)}
-        </div>
-    `;
-
-    // Add animations with delay
-    setTimeout(() => {
-        container.querySelectorAll('.fade-in').forEach((element, index) => {
-            element.style.animationDelay = `${index * 0.1}s`;
-        });
-    }, 100);
+  } catch (err) {
+    console.error('Error handling download:', err);
+    window.PhantomCards.showToast('Failed to initiate download. Please try again.', 'error');
+  }
 }
-
-/**
- * Get action button based on distribution type
- * @param {Object} item - Item data
- * @returns {string} HTML for action button
- */
-function getActionButton(item) {
-    if (!item.is_published) return '<p>This item is not available for download.</p>';
-
-    if (item.distribution_type === 'file') {
-        return `<button class="download-btn" onclick="handleDownload('${item.id}', '${item.storage_path}')">Download</button>`;
-    } else if (item.distribution_type === 'link') {
-        return `<button class="view-btn" onclick="window.open('${item.external_url}', '_blank')">View</button>`;
-    }
-
-    return '';
-}
-
-/**
- * Handle download button click
- * @param {string} itemId - Item ID
- * @param {string} storagePath - Storage path
- */
-async function handleDownload(itemId, storagePath) {
-    try {
-        const publicUrl = await window.dataService.getPublicUrl(
-            window.STORAGE_BUCKETS.DOWNLOADS,
-            storagePath
-        );
-
-        if (publicUrl) {
-            // Create a temporary anchor element with download attribute for direct CDN download
-            const link = document.createElement('a');
-            link.href = publicUrl;
-            link.download = storagePath.split('/').pop() || 'download';
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        } else {
-            console.error('Public URL is null for storagePath:', storagePath);
-            showErrorMessage('Download URL not available. Please contact support.');
-        }
-    } catch (error) {
-        console.error('Error handling download:', error);
-        showErrorMessage('Failed to initiate download. Please try again.');
-    }
-}
-
-/**
- * Add page animations
- */
-function addPageAnimations() {
-    // Animate navigation
-    const navLinks = document.querySelectorAll('.nav-links a');
-    navLinks.forEach((link, index) => {
-        link.style.animationDelay = `${index * 0.1}s`;
-        link.classList.add('slide-in');
-    });
-}
-
-/**
- * Show error message
- * @param {string} message - Error message
- */
-function showErrorMessage(message) {
-    const errorElement = document.createElement('div');
-    errorElement.className = 'error-message';
-    errorElement.textContent = message;
-    errorElement.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #ff4444;
-        color: white;
-        padding: 1rem;
-        border-radius: 4px;
-        z-index: 1000;
-        animation: slideIn 0.3s ease-out;
-    `;
-
-    document.body.appendChild(errorElement);
-
-    setTimeout(() => {
-        errorElement.remove();
-    }, 5000);
-}
+/* Keep global name used by inline handlers elsewhere on this page. */
+window.handleDownload = function (a, b, c) {
+  if (typeof b === 'string' && typeof c === 'string') return handleDetailDownload(b, c);
+  if (typeof a === 'string') return handleDetailDownload(a, b);
+};

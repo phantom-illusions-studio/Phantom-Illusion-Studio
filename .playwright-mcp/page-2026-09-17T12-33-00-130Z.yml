@@ -1,0 +1,118 @@
+- generic [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - navigation "Primary" [ref=e4]:
+      - link "Phantom Illusions Studio — home" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+        - img "Phantom Illusions Studio logo" [ref=e6]
+        - generic [ref=e7]:
+          - strong [ref=e8]: Phantom Illusions
+          - generic [ref=e9]: Studio
+      - button "Open menu" [ref=e10] [cursor=pointer]
+  - dialog "Menu" [ref=e14]:
+    - button "Close menu" [ref=e15] [cursor=pointer]: ×
+    - link "Home" [ref=e16] [cursor=pointer]:
+      - /url: index.html
+    - link "Catalogue" [ref=e17] [cursor=pointer]:
+      - /url: catalogue.html
+    - link "Apps" [ref=e18] [cursor=pointer]:
+      - /url: apps.html
+    - link "Games" [ref=e19] [cursor=pointer]:
+      - /url: games.html
+    - link "Software" [ref=e20] [cursor=pointer]:
+      - /url: software.html
+    - link "Studio" [ref=e21] [cursor=pointer]:
+      - /url: contact.html
+  - main [ref=e22]:
+    - generic [ref=e24]:
+      - paragraph [ref=e25]:
+        - link "Studio" [ref=e26] [cursor=pointer]:
+          - /url: index.html
+        - text: / Catalogue
+      - heading "Full catalogue" [level=1] [ref=e27]
+      - paragraph [ref=e28]: Every app, game and software release from Phantom Illusions Studio — searchable, filterable, direct from the studio.
+      - status [ref=e29]: 3 products — updated from studio catalogue
+    - generic [ref=e30]:
+      - search "Filter catalogue" [ref=e31]:
+        - searchbox "Search products" [ref=e36]
+        - button "Filters All products" [expanded] [active] [ref=e37] [cursor=pointer]:
+          - generic [ref=e40]: Filters
+          - generic [ref=e41]: All products
+          - generic [aria-hidden] [ref=e42]: v
+        - generic [ref=e133]:
+          - generic [ref=e134]: Product type
+          - group "Product type" [ref=e135]:
+            - button "All" [pressed] [ref=e136] [cursor=pointer]
+            - button "Apps" [ref=e137] [cursor=pointer]
+            - button "Games" [ref=e138] [cursor=pointer]
+            - button "Software" [ref=e139] [cursor=pointer]
+          - generic [ref=e140]: Availability
+          - group "Availability" [ref=e141]:
+            - button "Any access" [pressed] [ref=e142] [cursor=pointer]
+            - button "Download" [ref=e143] [cursor=pointer]
+            - button "Link" [ref=e144] [cursor=pointer]
+          - generic [ref=e145]: Sort by
+          - combobox "Sort products" [ref=e146]:
+            - option "Newest first" [selected]
+            - option "Name A–Z"
+      - region "Products" [ref=e43]:
+        - generic [ref=e44]:
+          - group "cryptor-cli — view details" [ref=e100] [cursor=pointer]:
+            - generic [ref=e102]:
+              - heading "cryptor-cli" [level=3] [ref=e103]
+              - generic [ref=e104]: software
+            - generic [ref=e106]: Web link · Available
+            - link "Open" [ref=e110]:
+              - /url: https://pypi.org/project/cryptor-cli/
+          - group "Spryte — view details" [ref=e111] [cursor=pointer]:
+            - generic [ref=e113]:
+              - heading "Spryte" [level=3] [ref=e114]
+              - generic [ref=e115]: game
+            - generic [ref=e117]: Download · Available
+            - button "Get" [ref=e121]
+          - group "Illusion CLI — view details" [ref=e122] [cursor=pointer]:
+            - generic [ref=e124]:
+              - heading "Illusion CLI" [level=3] [ref=e125]
+              - generic [ref=e126]: software
+            - generic [ref=e128]: Web link · Available
+            - link "Open" [ref=e132]:
+              - /url: https://github.com/mrblaqbeatle/illusion-cli
+  - contentinfo [ref=e70]:
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - img "Phantom Illusions Studio logo" [ref=e74]
+          - strong [ref=e75]: Phantom Illusions Studio
+        - paragraph [ref=e76]: Independent studio publishing its own apps, games and software. One catalogue, direct from the team that builds it.
+      - generic [ref=e77]:
+        - heading "Catalogue" [level=3] [ref=e78]
+        - link "All products" [ref=e79] [cursor=pointer]:
+          - /url: catalogue.html
+        - link "Apps" [ref=e80] [cursor=pointer]:
+          - /url: apps.html
+        - link "Games" [ref=e81] [cursor=pointer]:
+          - /url: games.html
+        - link "Software" [ref=e82] [cursor=pointer]:
+          - /url: software.html
+      - generic [ref=e83]:
+        - heading "Studio" [level=3] [ref=e84]
+        - link "About & contact" [ref=e85] [cursor=pointer]:
+          - /url: contact.html
+        - generic [ref=e86]:
+          - link "GitHub" [ref=e87] [cursor=pointer]:
+            - /url: "#"
+            - img "GitHub" [ref=e88]
+          - link "X / Twitter" [ref=e89] [cursor=pointer]:
+            - /url: https://x.com/studio_pha81508
+            - img "X / Twitter" [ref=e90]
+          - link "Instagram" [ref=e91] [cursor=pointer]:
+            - /url: https://www.instagram.com/phantomillusionsstudio/
+            - img "Instagram" [ref=e92]
+          - link "Reddit" [ref=e93] [cursor=pointer]:
+            - /url: https://www.reddit.com/user/Expensive-Towel-8998/
+            - img "Reddit" [ref=e94]
+          - link "YouTube" [ref=e95] [cursor=pointer]:
+            - /url: "#"
+            - img "YouTube" [ref=e96]
+    - generic [ref=e97]: © 2026 Phantom Illusions Studio. All rights reserved.

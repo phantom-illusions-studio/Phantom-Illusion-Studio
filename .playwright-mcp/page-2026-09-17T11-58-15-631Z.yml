@@ -1,0 +1,214 @@
+- generic [ref=f3e1]:
+  - link "Skip to content" [ref=f3e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f3e3]:
+    - navigation "Primary" [ref=f3e4]:
+      - link "Phantom Illusions Studio — home" [ref=f3e5] [cursor=pointer]:
+        - /url: index.html
+        - img "Phantom Illusions Studio logo" [ref=f3e6]
+        - generic [ref=f3e7]:
+          - strong [ref=f3e8]: Phantom Illusions
+          - generic [ref=f3e9]: Studio
+      - button "Open menu" [expanded] [ref=f3e10] [cursor=pointer]
+  - dialog "Menu" [ref=f3e14]:
+    - button "Close menu" [active] [ref=f3e15] [cursor=pointer]: ×
+    - link "Home" [ref=f3e16] [cursor=pointer]:
+      - /url: index.html
+    - link "Catalogue" [ref=f3e17] [cursor=pointer]:
+      - /url: catalogue.html
+    - link "Apps" [ref=f3e18] [cursor=pointer]:
+      - /url: apps.html
+    - link "Games" [ref=f3e19] [cursor=pointer]:
+      - /url: games.html
+    - link "Software" [ref=f3e20] [cursor=pointer]:
+      - /url: software.html
+    - link "Studio" [ref=f3e21] [cursor=pointer]:
+      - /url: contact.html
+  - main [ref=f3e22]:
+    - region [ref=f3e23]:
+      - generic [ref=f3e24]:
+        - generic [ref=f3e25]:
+          - paragraph [ref=f3e26]: Phantom Illusions Studio — Apps · Games · Software
+          - heading "Software and games, from one studio." [level=1] [ref=f3e27]
+          - paragraph [ref=f3e28]: We design and publish our own catalogue of applications, games and desktop software. Browse the collection, open a product page, and get the release directly from the studio.
+          - generic [ref=f3e29]:
+            - link "Browse the catalogue" [ref=f3e30] [cursor=pointer]:
+              - /url: catalogue.html
+            - link "Contact the studio" [ref=f3e31] [cursor=pointer]:
+              - /url: contact.html
+        - complementary "Studio index" [ref=f3e32]:
+          - list [ref=f3e34]:
+            - listitem [ref=f3e35]:
+              - link "Applications 0" [ref=f3e159] [cursor=pointer]:
+                - /url: apps.html
+                - generic [ref=f3e37]: Applications
+                - generic [ref=f3e38]: "0"
+            - listitem [ref=f3e39]:
+              - link "Games 1" [ref=f3e160] [cursor=pointer]:
+                - /url: games.html
+                - generic [ref=f3e41]: Games
+                - generic [ref=f3e42]: "1"
+            - listitem [ref=f3e43]:
+              - link "Software 2" [ref=f3e161] [cursor=pointer]:
+                - /url: software.html
+                - generic [ref=f3e45]: Software
+                - generic [ref=f3e46]: "2"
+          - generic [ref=f3e47]:
+            - text: "Latest release:"
+            - strong [ref=f3e162]: cryptor-cli
+            - text: · v0.1.1
+    - region [ref=f3e49]:
+      - generic [ref=f3e50]:
+        - generic [ref=f3e51]:
+          - generic [ref=f3e52]:
+            - heading "Featured releases" [level=2] [ref=f3e53]
+            - paragraph [ref=f3e54]: Selected products from the studio catalogue.
+          - link "View all →" [ref=f3e55] [cursor=pointer]:
+            - /url: catalogue.html
+        - group "Spryte — view details" [ref=f3e163] [cursor=pointer]:
+          - generic [ref=f3e165]:
+            - heading "Spryte" [level=3] [ref=f3e166]
+            - generic [ref=f3e167]:
+              - generic [ref=f3e168]: game
+              - generic [ref=f3e169]: v1.0.0
+          - paragraph [ref=f3e170]: Jump into Spryte, a retro 2D platformer. Survive lethal traps, outsmart enemies, and collect gold in high-stakes levels. Master your timing—can you reach the end?
+          - generic [ref=f3e171]: Download · Available
+          - generic [ref=f3e174]:
+            - button "Get" [ref=f3e175]
+            - link "Details" [ref=f3e176]:
+              - /url: description.html?id=332ba395-0e1b-4c43-bcd2-90f57c39b7fc
+    - region [ref=f3e70]:
+      - generic [ref=f3e71]:
+        - generic [ref=f3e73]:
+          - heading "Browse by category" [level=2] [ref=f3e74]
+          - paragraph [ref=f3e75]: Each category is its own shelf of the catalogue.
+        - generic [ref=f3e76]:
+          - link [ref=f3e177] [cursor=pointer]:
+            - /url: apps.html
+            - heading "Apps" [level=3] [ref=f3e78]
+            - paragraph [ref=f3e79]: Mobile and desktop applications published by the studio.
+            - text: 0 products
+          - link [ref=f3e178] [cursor=pointer]:
+            - /url: games.html
+            - heading "Games" [level=3] [ref=f3e81]
+            - paragraph [ref=f3e82]: Playable releases — downloads and web-playable titles.
+            - text: 1 product
+          - link [ref=f3e179] [cursor=pointer]:
+            - /url: software.html
+            - heading "Software" [level=3] [ref=f3e84]
+            - paragraph [ref=f3e85]: Desktop and professional-grade software solutions.
+            - text: 2 products
+    - region [ref=f3e86]:
+      - generic [ref=f3e87]:
+        - generic [ref=f3e88]:
+          - generic [ref=f3e89]:
+            - heading "Latest releases" [level=2] [ref=f3e90]
+            - paragraph [ref=f3e91]: Ordered by release date across the whole catalogue.
+          - link "Full catalogue →" [ref=f3e92] [cursor=pointer]:
+            - /url: catalogue.html
+        - generic [ref=f3e93]:
+          - group "cryptor-cli — view details" [ref=f3e180] [cursor=pointer]:
+            - generic [ref=f3e182]:
+              - heading "cryptor-cli" [level=3] [ref=f3e183]
+              - generic [ref=f3e184]:
+                - generic [ref=f3e185]: software
+                - generic [ref=f3e186]: v0.1.1
+            - paragraph [ref=f3e187]: A CLI tool for secure file encryption using AES-256-GCM and Argon2.
+            - generic [ref=f3e188]: Web link · Available
+            - generic [ref=f3e191]:
+              - link "Open" [ref=f3e192]:
+                - /url: https://pypi.org/project/cryptor-cli/
+              - link "Details" [ref=f3e193]:
+                - /url: description.html?id=743c0db4-5b54-49c1-ab31-20e3b8f936c1
+          - group "Spryte — view details" [ref=f3e194] [cursor=pointer]:
+            - generic [ref=f3e196]:
+              - heading "Spryte" [level=3] [ref=f3e197]
+              - generic [ref=f3e198]:
+                - generic [ref=f3e199]: game
+                - generic [ref=f3e200]: v1.0.0
+            - paragraph [ref=f3e201]: Jump into Spryte, a retro 2D platformer. Survive lethal traps, outsmart enemies, and collect gold in high-stakes levels. Master your timing—can you reach the end?
+            - generic [ref=f3e202]: Download · Available
+            - generic [ref=f3e205]:
+              - button "Get" [ref=f3e206]
+              - link "Details" [ref=f3e207]:
+                - /url: description.html?id=332ba395-0e1b-4c43-bcd2-90f57c39b7fc
+          - group "Illusion CLI — view details" [ref=f3e208] [cursor=pointer]:
+            - generic [ref=f3e210]:
+              - heading "Illusion CLI" [level=3] [ref=f3e211]
+              - generic [ref=f3e212]:
+                - generic [ref=f3e213]: software
+                - generic [ref=f3e214]: v1.0.3
+            - paragraph [ref=f3e215]: AI-powered CLI
+            - generic [ref=f3e216]: Web link · Available
+            - generic [ref=f3e219]:
+              - link "Open" [ref=f3e220]:
+                - /url: https://github.com/mrblaqbeatle/illusion-cli
+              - link "Details" [ref=f3e221]:
+                - /url: description.html?id=5825651f-ce4c-4574-94eb-5211581633bd
+    - region [ref=f3e107]:
+      - generic [ref=f3e109]:
+        - generic [ref=f3e110]:
+          - paragraph [ref=f3e111]: The studio
+          - heading "One team, one catalogue." [level=2] [ref=f3e112]
+          - paragraph [ref=f3e113]: Phantom Illusions Studio designs, builds and publishes its own software. Every product page tells you what the release does, which version is current, and exactly where to get it.
+          - generic [ref=f3e114]:
+            - link "About & contact" [ref=f3e115] [cursor=pointer]:
+              - /url: contact.html
+            - link "Browse everything →" [ref=f3e116] [cursor=pointer]:
+              - /url: catalogue.html
+        - list [ref=f3e117]:
+          - listitem [ref=f3e118]:
+            - generic [ref=f3e119]: Email
+            - link "phantomillusionsstudio@gmail.com" [ref=f3e120] [cursor=pointer]:
+              - /url: mailto:phantomillusionsstudio@gmail.com
+          - listitem [ref=f3e121]:
+            - generic [ref=f3e122]: Phone
+            - link "+256 778-591487" [ref=f3e123] [cursor=pointer]:
+              - /url: tel:+256778591487
+          - listitem [ref=f3e124]:
+            - generic [ref=f3e125]: Catalogue
+            - link "All products →" [ref=f3e126] [cursor=pointer]:
+              - /url: catalogue.html
+  - contentinfo [ref=f3e127]:
+    - generic [ref=f3e128]:
+      - generic [ref=f3e129]:
+        - generic [ref=f3e130]:
+          - img "Phantom Illusions Studio logo" [ref=f3e131]
+          - strong [ref=f3e132]: Phantom Illusions Studio
+        - paragraph [ref=f3e133]: Independent studio publishing its own apps, games and software. One catalogue, direct from the team that builds it.
+      - generic [ref=f3e134]:
+        - heading "Catalogue" [level=3] [ref=f3e135]
+        - link "All products" [ref=f3e136] [cursor=pointer]:
+          - /url: catalogue.html
+        - link "Apps" [ref=f3e137] [cursor=pointer]:
+          - /url: apps.html
+        - link "Games" [ref=f3e138] [cursor=pointer]:
+          - /url: games.html
+        - link "Software" [ref=f3e139] [cursor=pointer]:
+          - /url: software.html
+      - generic [ref=f3e140]:
+        - heading "Studio" [level=3] [ref=f3e141]
+        - link "About & contact" [ref=f3e142] [cursor=pointer]:
+          - /url: contact.html
+        - link "Staff sign-in" [ref=f3e143] [cursor=pointer]:
+          - /url: login.html
+        - generic [ref=f3e144]:
+          - link "GitHub" [ref=f3e145] [cursor=pointer]:
+            - /url: "#"
+            - img "GitHub" [ref=f3e146]
+          - link "X / Twitter" [ref=f3e147] [cursor=pointer]:
+            - /url: https://x.com/studio_pha81508
+            - img "X / Twitter" [ref=f3e148]
+          - link "Instagram" [ref=f3e149] [cursor=pointer]:
+            - /url: https://www.instagram.com/phantomillusionsstudio/
+            - img "Instagram" [ref=f3e150]
+          - link "Reddit" [ref=f3e151] [cursor=pointer]:
+            - /url: https://www.reddit.com/user/Expensive-Towel-8998/
+            - img "Reddit" [ref=f3e152]
+          - link "YouTube" [ref=f3e153] [cursor=pointer]:
+            - /url: "#"
+            - img "YouTube" [ref=f3e154]
+    - generic [ref=f3e156]:
+      - generic [ref=f3e157]: © 2026 Phantom Illusions Studio. All rights reserved.
+      - link "Staff sign-in" [ref=f3e158] [cursor=pointer]:
+        - /url: login.html

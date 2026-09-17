@@ -1,0 +1,84 @@
+- generic [active] [ref=f4e1]:
+  - link "Skip to content" [ref=f4e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f4e3]:
+    - navigation "Primary" [ref=f4e4]:
+      - link "Phantom Illusions Studio — home" [ref=f4e5] [cursor=pointer]:
+        - /url: index.html
+        - img "Phantom Illusions Studio logo" [ref=f4e6]
+        - generic [ref=f4e7]:
+          - strong [ref=f4e8]: Phantom Illusions
+          - generic [ref=f4e9]: Studio
+      - button "Open menu" [ref=f4e10] [cursor=pointer]
+  - dialog "Menu" [ref=f4e14]:
+    - button "Close menu" [ref=f4e15] [cursor=pointer]: ×
+    - link "Home" [ref=f4e16] [cursor=pointer]:
+      - /url: index.html
+    - link "Catalogue" [ref=f4e17] [cursor=pointer]:
+      - /url: catalogue.html
+    - link "Apps" [ref=f4e18] [cursor=pointer]:
+      - /url: apps.html
+    - link "Games" [ref=f4e19] [cursor=pointer]:
+      - /url: games.html
+    - link "Software" [ref=f4e20] [cursor=pointer]:
+      - /url: software.html
+    - link "Studio" [ref=f4e21] [cursor=pointer]:
+      - /url: contact.html
+  - main [ref=f4e22]:
+    - generic [ref=f4e24]:
+      - paragraph [ref=f4e25]:
+        - link "Studio" [ref=f4e26] [cursor=pointer]:
+          - /url: index.html
+        - text: /
+        - link "Catalogue" [ref=f4e27] [cursor=pointer]:
+          - /url: catalogue.html
+        - text: / Apps
+      - heading "Apps" [level=1] [ref=f4e28]
+      - paragraph [ref=f4e29]: Mobile and desktop applications published by the studio. Open a product for version, release and access details.
+      - status [ref=f4e30]: Loading…
+    - generic [ref=f4e31]:
+      - search "Filter apps" [ref=f4e32]:
+        - searchbox "Search apps" [ref=f4e37]
+        - button "Filters All products" [ref=f4e38] [cursor=pointer]:
+          - generic [ref=f4e41]: Filters
+          - generic [ref=f4e42]: All products
+          - generic [aria-hidden] [ref=f4e43]: v
+      - region "Apps" [ref=f4e44]
+  - contentinfo [ref=f4e59]:
+    - generic [ref=f4e60]:
+      - generic [ref=f4e61]:
+        - generic [ref=f4e62]:
+          - img "Phantom Illusions Studio logo" [ref=f4e63]
+          - strong [ref=f4e64]: Phantom Illusions Studio
+        - paragraph [ref=f4e65]: Independent studio publishing its own apps, games and software. One catalogue, direct from the team that builds it.
+      - generic [ref=f4e66]:
+        - heading "Catalogue" [level=3] [ref=f4e67]
+        - link "All products" [ref=f4e68] [cursor=pointer]:
+          - /url: catalogue.html
+        - link "Apps" [ref=f4e69] [cursor=pointer]:
+          - /url: apps.html
+        - link "Games" [ref=f4e70] [cursor=pointer]:
+          - /url: games.html
+        - link "Software" [ref=f4e71] [cursor=pointer]:
+          - /url: software.html
+      - generic [ref=f4e72]:
+        - heading "Studio" [level=3] [ref=f4e73]
+        - link "About & contact" [ref=f4e74] [cursor=pointer]:
+          - /url: contact.html
+        - generic [ref=f4e75]:
+          - link "GitHub" [ref=f4e76] [cursor=pointer]:
+            - /url: "#"
+            - img "GitHub" [ref=f4e77]
+          - link "X / Twitter" [ref=f4e78] [cursor=pointer]:
+            - /url: https://x.com/studio_pha81508
+            - img "X / Twitter" [ref=f4e79]
+          - link "Instagram" [ref=f4e80] [cursor=pointer]:
+            - /url: https://www.instagram.com/phantomillusionsstudio/
+            - img "Instagram" [ref=f4e81]
+          - link "Reddit" [ref=f4e82] [cursor=pointer]:
+            - /url: https://www.reddit.com/user/Expensive-Towel-8998/
+            - img "Reddit" [ref=f4e83]
+          - link "YouTube" [ref=f4e84] [cursor=pointer]:
+            - /url: "#"
+            - img "YouTube" [ref=f4e85]
+    - generic [ref=f4e86]: © 2026 Phantom Illusions Studio. All rights reserved.
