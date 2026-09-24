@@ -1,10 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phantom Illusions Studio — Apps, Games &amp; Software</title>
+    <title>Phantom Illusions Studio — Apps, Games & Software</title>
     <meta name="description" content="Phantom Illusions Studio: a technology and game studio. Browse our catalogue of apps, games and software.">
+    
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://phantom-illusions-studio.com/#organization",
+      "name": "Phantom Illusions Studio Company Limited",
+      "alternateName": "Phantom Illusions Studio",
+      "url": "https://phantom-illusions-studio.com",
+      "logo": "https://phantom-illusions-studio.com/logo.png",
+      "description": "An independent Ugandan studio on a mission to become the greatest game studio in Uganda and East Africa. Started in 2022 with zero external funding — proving world-class games can be built from Uganda despite limited resources and lack of high-end hardware.",
+      "foundingDate": "2022",
+      "founders": [
+        { "@id": "https://phantom-illusions-studio.com/#andrew" },
+        { "@id": "https://phantom-illusions-studio.com/#ezra" }
+      ],
+      "brand": [
+        { "@id": "https://phantom-illusions-studio.com/#taremwa-studios" },
+        { "@id": "https://phantom-illusions-studio.com/#phantombox" }
+      ]
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://phantom-illusions-studio.com/#taremwa-studios",
+      "name": "Taremwa Studios",
+      "description": "The games trademark and publishing label of Phantom Illusions Studio Company Limited. Dedicated brand under which all games are built and published. Not a separate company.",
+      "url": "https://taremwa-studios.itch.io"
+      "logo": "https://phantom-illusions-studio.com/taremwa-studios.png"
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://phantom-illusions-studio.com/#phantombox",
+      "name": "phantombox.ai",
+      "alternateName": "PhantomBox",
+      "description": "Official trademark of Phantom Illusions Studio Company Limited. An offline-first AI chat infrastructure that runs LLMs locally on laptop/desktop via llama.cpp and broadcasts the chat interface via WiFi/hotspot to any phone browser with zero setup on the phone. Features local model switching, tok/s metrics, offline chat storage, and automatic fallback to Oracle cloud VPS.",
+      "url": "https://phantombox.phantom-illusions-studio.com"
+      "logo": "https://phantom-illusions-studio.com/phantombox1.png"
+      "logo": "https://phantom-illusions-studio.com/phantombox2.png"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "PhantomBox",
+      "isPartOf": { "@id": "https://phantom-illusions-studio.com/#phantombox" },
+      "applicationCategory": "AIApplication",
+      "operatingSystem": "Windows, Linux, Android, iOS",
+      "url": "https://phantombox.phantom-illusions-studio.com",
+      "creator": { "@id": "https://phantom-illusions-studio.com/#organization" }
+    },
+    {
+      "@type": "MobileGame",
+      "name": "Sprtye",
+      "description": "A 2D platformer game, dodge monsters and obstacles, jump over platforms to reach the treasure chest, beat your high score."
+      "publisher": { "@id": "https://phantom-illusions-studio.com/#taremwa-studios" },
+      "creator": { "@id": "https://phantom-illusions-studio.com/#organization" }
+    },
+    {
+      "@type": "MobileGame",
+      "name": "Ancient Warriors",
+      "description": "MMORPG built from the ground up in Uganda, designed to be the first of its kind in Uganda, East Africa, and Africa at large in its own architecture and scale.",
+      "publisher": { "@id": "https://phantom-illusions-studio.com/#taremwa-studios" },
+      "creator": { "@id": "https://phantom-illusions-studio.com/#organization" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://phantom-illusions-studio.com/#andrew",
+      "name": "Andrew Taremwa",
+      "image": "https://phantom-illusions-studio.com/andrew.jpg"
+      "jobTitle": "Founder & Lead Architect, Director and CEO",
+      "description": "Handles all server infrastructure, VPS maintenance, domain systems, web and browser platforms, and is the lead architect and active developer of Ancient Warriors. All while CEO of the company."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://phantom-illusions-studio.com/#ezra",
+      "name": "Ezra Mwanani",
+      "image": "https://phantom-illusions-studio.com/ezra.png"
+      "jobTitle": "Co-Founder & Lead Game Engineer, CTO & COO",
+      "description": "Godot specialist leading core game development in GDScript, gameplay systems, network infrastructure and database authentication. CTO and COO of the company."
+    }
+  ]
+}
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -30,6 +112,7 @@
                 <li><a href="games.html">Games</a></li>
                 <li><a href="software.html">Software</a></li>
                 <li><a href="contact.html">Studio</a></li>
+                <li><a href="founders.html">Founders</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -46,6 +129,7 @@
         <a href="games.html">Games</a>
         <a href="software.html">Software</a>
         <a href="contact.html">Studio</a>
+        <a href="founders.html">Founders</a>
     </div>
 
     <main id="main">
