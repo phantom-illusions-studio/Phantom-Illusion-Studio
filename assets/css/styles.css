@@ -555,7 +555,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg-soft); margin
 .founder-link:hover { color: var(--brand-ink); }
 .founder-link:hover span { transform: translateX(3px); }
 
-/* Reveal: photo sharpens, text lifts. Touch/keyboard get the effect on tap. */
+/* Reveal: photo sharpens, text lifts. Only where a real hover exists. */
 @media (hover: hover) {
   .founder-banner:hover .founder-media img,
   .founder-banner:focus-within .founder-media img {
@@ -565,9 +565,15 @@ footer { border-top: 1px solid var(--border); background: var(--bg-soft); margin
   .founder-banner:hover::before,
   .founder-banner:focus-within::before { opacity: 0.88; }
 }
-.founder-banner:active .founder-media img {
-  filter: blur(0) grayscale(0.35) brightness(0.85);
-  transform: scale(1.02);
+
+/* Touch devices have no hover, so show the photo sharp by default instead of
+   blurring it with no way to reveal it. */
+@media (hover: none) {
+  .founder-banner .founder-media img {
+    filter: blur(0) grayscale(0.35) brightness(0.85);
+    transform: scale(1.02);
+  }
+  .founder-banner::before { opacity: 0.88; }
 }
 
 /* ================= Responsive ================= */
@@ -693,10 +699,12 @@ footer { border-top: 1px solid var(--border); background: var(--bg-soft); margin
   .studio-strip { padding: 1.4rem; gap: 1.25rem; }
   .contact-lines li { padding: 0.65rem 0.8rem; flex-direction: column; align-items: flex-start; gap: 0.15rem; }
 
-  /* Founders: stacked banners, stacked content, lighter blur */
+  /* Founders: stacked banners, stacked content, lighter blur (hover devices only) */
   .founder-split { padding: 1.25rem 0.875rem 0; gap: 0.7rem; }
   .founder-banner { min-height: 62vh; padding: 1.6rem 1.1rem; border-radius: var(--radius-md); }
-  .founder-media img { filter: blur(14px) grayscale(1) brightness(0.42); }
+  @media (hover: hover) {
+    .founder-media img { filter: blur(14px) grayscale(1) brightness(0.42); }
+  }
   .founder-banner .eyebrow { font-size: 0.64rem; margin-bottom: 0.6rem; }
   .founder-name { font-size: 1.9rem; margin-bottom: 0.55rem; }
   .founder-role { font-size: 0.66rem; letter-spacing: 0.1em; padding-bottom: 0.7rem; margin-bottom: 0.7rem; }
