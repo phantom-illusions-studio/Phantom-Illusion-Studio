@@ -9,35 +9,73 @@
         content="Meet the two founders of Phantom Illusions Studio: Andrew Taremwa, Founder & Lead Architect, Director and CEO, and Ezra Mwanani, Co-Founder & Lead Game Engineer, CTO and COO.">
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://phantom-illusions-studio.com/#organization",
+      "name": "Phantom Illusions Studio",
+      "url": "https://phantom-illusions-studio.com/",
+      "logo": "https://phantom-illusions-studio.com/logo.png",
+      "foundingDate": "2022",
+      "founders": [
+        { "@id": "https://phantom-illusions-studio.com/#andrew" },
+        { "@id": "https://phantom-illusions-studio.com/#ezra" }
+      ],
+      "sameAs": [],
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": { "@id": "https://phantombox.ai/#software" }
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://phantombox.ai/#software",
+      "name": "PhantomBox",
+      "url": "https://phantomboxai.phantom-illusions-studio.com/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Android, Windows, macOS, Linux",
+      "description": "PhantomBox is a multi-provider AI routing platform with local-first support, LAN discovery, server integrity signatures, and credit-based access to a network of models.",
+      "author": { "@id": "https://phantom-illusions-studio.com/#organization" },
+      "publisher": { "@id": "https://phantom-illusions-studio.com/#organization" },
+      "creator": [
+        { "@id": "https://phantom-illusions-studio.com/#andrew" },
+        { "@id": "https://phantom-illusions-studio.com/#ezra" }
+      ]
+    },
+    {
       "@type": "AboutPage",
       "@id": "https://phantom-illusions-studio.com/founders.html#page",
       "url": "https://phantom-illusions-studio.com/founders.html",
       "name": "Founders — Phantom Illusions Studio",
       "about": { "@id": "https://phantom-illusions-studio.com/#organization" },
       "mainEntity": [
-        {
-          "@type": "Person",
-          "@id": "https://phantom-illusions-studio.com/#andrew",
-          "name": "Andrew Taremwa",
-          "image": "https://phantom-illusions-studio.com/andrew.jpg",
-          "jobTitle": "Founder & Lead Architect, Director and CEO",
-          "worksFor": { "@id": "https://phantom-illusions-studio.com/#organization" },
-          "description": "Handles all server infrastructure, VPS maintenance, domain systems, web and browser platforms, and is the lead architect and active developer of Ancient Warriors. All while CEO of the company."
-        },
-        {
-          "@type": "Person",
-          "@id": "https://phantom-illusions-studio.com/#ezra",
-          "name": "Ezra Mwanani",
-          "image": "https://phantom-illusions-studio.com/ezra.jpeg",
-          "jobTitle": "Co-Founder & Lead Game Engineer, CTO & COO",
-          "worksFor": { "@id": "https://phantom-illusions-studio.com/#organization" },
-          "description": "Godot specialist leading core game development in GDScript, gameplay systems, network infrastructure and database authentication. CTO and COO of the company."
-        }
+        { "@id": "https://phantom-illusions-studio.com/#andrew" },
+        { "@id": "https://phantom-illusions-studio.com/#ezra" }
       ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://phantom-illusions-studio.com/#andrew",
+      "name": "Taremwa Andrew Jr.",
+      "image": "https://phantom-illusions-studio.com/andrew.jpg",
+      "jobTitle": "Founder & Lead Architect, Director and CEO",
+      "worksFor": { "@id": "https://phantom-illusions-studio.com/#organization" },
+      "description": "Handles all server infrastructure, VPS maintenance, domain systems, web and browser platforms, and is the lead architect and active developer of Phantombox and Ancient Warriors. CEO of the company."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://phantom-illusions-studio.com/#ezra",
+      "name": "Ezra Mwanani",
+      "image": "https://phantom-illusions-studio.com/ezra.jpeg",
+      "jobTitle": "Co-Founder & Lead Game Engineer, CTO & COO",
+      "worksFor": { "@id": "https://phantom-illusions-studio.com/#organization" },
+      "description": "Godot specialist leading core game development in GDScript, gameplay systems, network infrastructure and database authentication. CTO and COO of the company."
     }
-    </script>
+  ]
+}
+</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
